@@ -135,8 +135,9 @@ export const styles: Record<string, CSSProperties> = {
     fontSize: 'clamp(14px, 1.1vw, 16px)',
     lineHeight: 1.6,
     display: 'flex',
-    flexDirection: 'column',
-    gap: '1vh',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: '15px',
     borderTop: 'none',
   },
 

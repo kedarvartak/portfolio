@@ -29,7 +29,7 @@ export default function Home() {
             <a href="https://www.vit.edu/" target="_blank" rel="noopener noreferrer" className="inline-link">Vishwakarma Institute of Technology, Pune</a>.
           </p>
 
-          <div style={styles.writeSection}>
+          {/* <div style={styles.writeSection}>
             I write{' '}
             <a
               href="/essays"
@@ -38,7 +38,7 @@ export default function Home() {
               here
             </a>
             .
-          </div>
+          </div> */}
         </div>
 
         <footer style={styles.footer}>
@@ -49,12 +49,36 @@ export default function Home() {
             kedarvartak01@gmail.com
           </a>
           <a
+            href="https://github.com/kedarvartak"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.footerLink}
+          >
+            GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/kedarvartak20"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.footerLink}
+          >
+            LinkedIn
+          </a>
+          <a
             href="https://twitter.com/kedar2sexy"
             target="_blank"
             rel="noopener noreferrer"
             style={styles.footerLink}
           >
             Twitter
+          </a>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.footerLink}
+          >
+            Resume
           </a>
         </footer>
       </aside>
