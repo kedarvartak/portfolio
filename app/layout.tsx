@@ -9,7 +9,7 @@ const victorMono = Victor_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Kedar Vartak - To Be Founder & Engineer',
+  title: 'Kedar Vartak',
   description: 'I am a 21yo Founder and Engineer',
   keywords: ['Kedar Vartak', 'entrepreneur', 'founder', 'engineer', 'developer', 'startup'],
   authors: [{ name: 'Kedar Vartak' }],
@@ -19,12 +19,12 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://kedarvartak.com',
     siteName: 'Kedar Vartak',
-    title: 'Kedar Vartak - To Be Founder & Engineer',
+    title: 'Kedar Vartak',
     description: 'I am a 21yo Founder and Engineer',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kedar Vartak - To Be Founder & Engineer',
+    title: 'Kedar Vartak',
     description: 'I am a 21yo Founder and Engineer',
     creator: '@kedarvartak',
   },

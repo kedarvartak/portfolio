@@ -2,8 +2,8 @@ import { styles } from './styles'
 
 export default function Home() {
   return (
-    <div style={styles.container}>
-      <aside style={styles.leftSidebar}>
+    <div style={styles.container} className="layout-container">
+      <aside style={styles.leftSidebar} className="layout-sidebar">
         <div>
           {/* <header style={styles.header}>
             <Link href="/" style={styles.navLink}>
@@ -26,7 +26,7 @@ export default function Home() {
           <p style={styles.bio}>
             I am particularly interested in <strong style={styles.bold}>AI</strong> and keep up with the latest tools and
             technologies in that space. I completed my Engineering in Artificial Intelligence from{' '}
-            <a href="https://www.vit.edu/" target="_blank" rel="noopener noreferrer" className="inline-link">Vishwakarma Institute of Technology, Pune</a>.
+            <a href="https://www.vit.edu/" target="_blank" rel="noopener noreferrer" className="inline-link">Vishwakarma Institute of Technology, Pune</a> in 26'.
           </p>
 
           {/* <div style={styles.writeSection}>
@@ -41,7 +41,7 @@ export default function Home() {
           </div> */}
         </div>
 
-        <footer style={styles.footer}>
+        <footer style={styles.footer} className="layout-footer">
           <a
             href="mailto:kedarvartak01@gmail.com"
             style={styles.footerLink}
@@ -57,7 +57,7 @@ export default function Home() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/kedarvartak20"
+            href="https://linkedin.com/in/kedar-vartak20"
             target="_blank"
             rel="noopener noreferrer"
             style={styles.footerLink}
@@ -83,10 +83,10 @@ export default function Home() {
         </footer>
       </aside>
 
-      <main style={styles.rightContent}>
-        <p style={styles.sectionHeading}>Some of my latest souvenirs</p>
+      <main style={styles.rightContent} className="layout-main">
+        <p style={styles.sectionHeading}>Some of my latest work</p>
 
-        <ul style={styles.accomplishmentsGrid}>
+        <ul style={styles.accomplishmentsGrid} className="layout-grid">
           <li style={styles.accomplishmentItem}>
             <div style={styles.itemHeader}>
               <span style={styles.itemNumber}>01</span>
