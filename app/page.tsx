@@ -90,7 +90,26 @@ export default function Home() {
           <li style={styles.accomplishmentItem}>
             <div style={styles.itemHeader}>
               <span style={styles.itemNumber}>01</span>
-              <span style={styles.itemTitle}>shared-memory-mcp</span>
+              <span style={styles.itemTitle}>Work · Loopr.ai</span>
+            </div>
+            <div style={styles.itemDescription}>
+              Visual inspection platform that automates defect and abnormality detection. I operate as a generalist — engineering, testing, ideating, whatever the team needs.
+            </div>
+            <div style={styles.itemLinks}>
+              <a
+                href="https://www.loopr.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={styles.link}
+              >
+                loopr.ai
+              </a>
+            </div>
+          </li>
+          <li style={styles.accomplishmentItem}>
+            <div style={styles.itemHeader}>
+              <span style={styles.itemNumber}>02</span>
+              <span style={styles.itemTitle}>Project · shared-memory-mcp</span>
             </div>
             <div style={styles.itemDescription}>
               Persistent memory for AI tools that lives across conversations and IDEs, while using fewer tokens. (88+ downloads)
@@ -116,7 +135,7 @@ export default function Home() {
           </li>
           <li style={styles.accomplishmentItem}>
             <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>02</span>
+              <span style={styles.itemNumber}>03</span>
               <span style={styles.itemTitle}>Contributions · Astro</span>
             </div>
             <div style={styles.itemDescription}>
@@ -135,7 +154,7 @@ export default function Home() {
           </li>
           <li style={styles.accomplishmentItem}>
             <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>03</span>
+              <span style={styles.itemNumber}>04</span>
               <span style={styles.itemTitle}>Contributions · freeCodeCamp</span>
             </div>
             <div style={styles.itemDescription}>
@@ -154,7 +173,7 @@ export default function Home() {
           </li>
           <li style={styles.accomplishmentItem}>
             <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>04</span>
+              <span style={styles.itemNumber}>05</span>
               <span style={styles.itemTitle}>Freelancing & Consulting · Sangam India</span>
             </div>
             <div style={styles.itemDescription}>
@@ -173,7 +192,7 @@ export default function Home() {
           </li>
           <li style={styles.accomplishmentItem}>
             <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>05</span>
+              <span style={styles.itemNumber}>06</span>
               <span style={styles.itemTitle}>Freelancing & Consulting · Tenancy Passport</span>
             </div>
             <div style={styles.itemDescription}>
