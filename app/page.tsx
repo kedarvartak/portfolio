@@ -1,4 +1,5 @@
 import { styles } from './styles'
+import { ThemeSwitcher } from './components/theme-switcher'
 
 export default function Home() {
   return (
@@ -84,6 +85,8 @@ export default function Home() {
       </aside>
 
       <main style={styles.rightContent} className="layout-main">
+        <ThemeSwitcher />
+
         <p style={styles.sectionHeading}>Some of my latest work</p>
 
         <ul style={styles.accomplishmentsGrid} className="layout-grid">

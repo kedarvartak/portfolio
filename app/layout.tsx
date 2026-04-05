@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Victor_Mono } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const victorMono = Victor_Mono({
@@ -47,8 +48,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={victorMono.variable}>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function(){try{var key='portfolio-theme';var theme=localStorage.getItem(key);if(theme==='midnight'||theme==='amber'){document.documentElement.dataset.theme=theme;}else{document.documentElement.removeAttribute('data-theme');}}catch(e){document.documentElement.removeAttribute('data-theme');}})();`}
+        </Script>
         {children}
       </body>
     </html>

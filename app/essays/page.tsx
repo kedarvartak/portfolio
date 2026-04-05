@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ThemeSwitcher } from '../components/theme-switcher'
 import { styles } from '../styles'
 
 export const metadata = {
@@ -8,14 +9,18 @@ export const metadata = {
 
 export default function Essays() {
   return (
-    <div style={styles.container}>
+    <div style={{ ...styles.container, ...styles.pageColumn }}>
       <header style={styles.header}>
-        <Link href="/" style={styles.navLink}>
-          START
-        </Link>
-        <Link href="/essays" style={styles.navLink}>
-          ESSAYS
-        </Link>
+        <div style={styles.headerGroup}>
+          <Link href="/" style={styles.navLink}>
+            START
+          </Link>
+          <Link href="/essays" style={styles.navLink}>
+            ESSAYS
+          </Link>
+        </div>
+
+        <ThemeSwitcher />
       </header>
 
       <main style={styles.main}>
