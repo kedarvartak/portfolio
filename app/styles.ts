@@ -325,4 +325,298 @@ export const styles: Record<string, CSSProperties> = {
     backgroundImage:
       'linear-gradient(135deg, #f7efe4 0%, #f7efe4 30%, #f0d6b4 30%, #f0d6b4 34%, #fffaf4 34%, #fffaf4 66%, #dfae76 66%, #dfae76 70%, #f3e2cc 70%, #f3e2cc 100%)',
   },
+
+  workoutMain: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.75vh',
+    flex: 1,
+    minHeight: 0,
+    marginTop: '-3vh',
+  },
+
+  workoutBackLink: {
+    textDecoration: 'underline',
+    textUnderlineOffset: '3px',
+    color: 'var(--link)',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 0,
+    padding: 0,
+    border: 'none',
+    background: 'transparent',
+    fontSize: '17px',
+    letterSpacing: '0.02em',
+    fontWeight: 500,
+    transition: 'opacity 0.2s ease',
+  },
+
+  workoutTitleRow: {
+    display: 'flex',
+    alignItems: 'baseline',
+    justifyContent: 'space-between',
+    gap: '12px',
+  },
+
+  workoutSubtleText: {
+    fontSize: 'clamp(12px, 0.95vw, 14px)',
+    color: 'var(--subtle)',
+  },
+
+  workoutKpiGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+    gap: '12px',
+  },
+
+  workoutStravaGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+    gap: '12px',
+  },
+
+  workoutStravaCard: {
+    border: '1px solid var(--line)',
+    background: 'var(--surface-elevated)',
+    padding: '12px',
+    borderRadius: '10px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '4px',
+    minWidth: 0,
+  },
+
+  workoutStravaValue: {
+    fontSize: 'clamp(16px, 1.4vw, 22px)',
+    color: 'var(--text)',
+    fontWeight: 600,
+    lineHeight: 1.1,
+  },
+
+  workoutStatusText: {
+    fontSize: '12px',
+    color: 'var(--muted)',
+    marginBottom: '2px',
+  },
+
+  workoutKpiCard: {
+    border: '1px solid var(--line)',
+    background: 'var(--surface-elevated)',
+    padding: '14px',
+    borderRadius: '10px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '6px',
+    minWidth: 0,
+  },
+
+  workoutKpiLabel: {
+    fontSize: '11px',
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase',
+    color: 'var(--subtle)',
+  },
+
+  workoutKpiValue: {
+    fontSize: 'clamp(20px, 1.8vw, 28px)',
+    color: 'var(--text)',
+    fontWeight: 600,
+    lineHeight: 1.1,
+  },
+
+  workoutKpiHint: {
+    fontSize: '12px',
+    color: 'var(--muted)',
+  },
+
+  workoutPanelGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1.35fr 1fr',
+    gap: '10px',
+    flex: 1,
+    minHeight: 0,
+  },
+
+  workoutPanel: {
+    border: '1px solid var(--line)',
+    background: 'var(--surface-elevated)',
+    borderRadius: '10px',
+    padding: '14px',
+    minHeight: 0,
+    overflow: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+  },
+
+  workoutPanelTitle: {
+    fontSize: '12px',
+    textTransform: 'uppercase',
+    letterSpacing: '0.06em',
+    color: 'var(--subtle)',
+  },
+
+  workoutTable: {
+    width: '100%',
+    borderCollapse: 'collapse',
+    tableLayout: 'fixed',
+  },
+
+  workoutTableHead: {
+    fontSize: '11px',
+    color: 'var(--subtle)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.04em',
+  },
+
+  workoutTableCell: {
+    fontSize: '13px',
+    color: 'var(--muted)',
+    padding: '8px 6px',
+    borderBottom: '1px solid var(--line)',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+
+  workoutTableCellStrong: {
+    color: 'var(--text)',
+    fontWeight: 600,
+  },
+
+  workoutList: {
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+    minHeight: 0,
+  },
+
+  workoutSessionItem: {
+    border: '1px solid var(--line)',
+    borderRadius: '8px',
+    padding: '10px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '6px',
+    background: 'var(--surface)',
+  },
+
+  workoutSessionHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: '10px',
+  },
+
+  workoutSessionTitle: {
+    fontSize: '13px',
+    fontWeight: 600,
+    color: 'var(--text)',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+
+  workoutSessionMeta: {
+    fontSize: '12px',
+    color: 'var(--subtle)',
+  },
+
+  workoutBadgeRow: {
+    display: 'flex',
+    gap: '8px',
+    flexWrap: 'wrap',
+  },
+
+  workoutBadge: {
+    fontSize: '11px',
+    color: 'var(--muted)',
+    border: '1px solid var(--line)',
+    borderRadius: '999px',
+    padding: '2px 8px',
+    background: 'var(--surface)',
+  },
+
+  workoutBarList: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+    minHeight: 0,
+  },
+
+  workoutBarRow: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '6px',
+  },
+
+  workoutBarRowMeta: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '8px',
+  },
+
+  workoutBarTrack: {
+    width: '100%',
+    height: '10px',
+    background: 'var(--surface)',
+    border: '1px solid var(--line)',
+    borderRadius: '999px',
+    overflow: 'hidden',
+  },
+
+  workoutBarFill: {
+    height: '100%',
+    background: 'var(--accent)',
+    opacity: 0.75,
+    borderRadius: '999px',
+    minWidth: '8px',
+  },
+
+  workoutWeekChart: {
+    height: '96px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(8, minmax(0, 1fr))',
+    gap: '8px',
+    alignItems: 'end',
+    marginBottom: '4px',
+  },
+
+  workoutWeekColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '4px',
+    minWidth: 0,
+  },
+
+  workoutWeekColumnInner: {
+    width: '100%',
+    height: '76px',
+    border: '1px solid var(--line)',
+    background: 'var(--surface)',
+    borderRadius: '8px',
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    padding: '3px',
+  },
+
+  workoutWeekBar: {
+    width: '100%',
+    borderRadius: '5px',
+    background: 'var(--accent)',
+    opacity: 0.75,
+    minHeight: '8px',
+  },
+
+  workoutWeekLabel: {
+    fontSize: '10px',
+    color: 'var(--subtle)',
+    whiteSpace: 'nowrap',
+  },
 }

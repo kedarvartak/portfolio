@@ -81,6 +81,12 @@ export default function Home() {
           >
             Resume
           </a>
+          <a
+            href="/workouts"
+            style={styles.footerLink}
+          >
+            Workouts
+          </a>
         </footer>
       </aside>
 
