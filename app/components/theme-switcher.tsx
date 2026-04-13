@@ -44,6 +44,7 @@ export function ThemeSwitcher() {
     <div style={styles.themeDock} aria-label="Theme selector">
       <button
         type="button"
+        className="footer-theme-button"
         onClick={() => setIsOpen((value) => !value)}
         aria-expanded={isOpen}
         aria-controls="theme-palette-panel"

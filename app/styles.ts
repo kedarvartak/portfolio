@@ -2,13 +2,14 @@ import { CSSProperties } from 'react'
 
 export const styles: Record<string, CSSProperties> = {
   container: {
-    maxWidth: '1200px',
+    width: 'min(96vw, 1500px)',
+    maxWidth: '1500px',
     margin: '0 auto',
-    padding: '6vh 4vw',
+    padding: '4.5vh 3vw',
     height: '100vh',
     display: 'flex',
     flexDirection: 'row',
-    gap: '6vw',
+    gap: '4vw',
     overflow: 'hidden',
     backgroundColor: 'var(--surface)',
     boxShadow: 'var(--shadow)',
@@ -16,7 +17,7 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   leftSidebar: {
-    flex: '0 0 35%',
+    flex: '0 0 32%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -32,6 +33,8 @@ export const styles: Record<string, CSSProperties> = {
     justifyContent: 'flex-start',
     minWidth: 0,
     position: 'relative',
+    overflowY: 'auto',
+    overflowX: 'hidden',
   },
 
   main: {
@@ -84,12 +87,18 @@ export const styles: Record<string, CSSProperties> = {
     marginBottom: '2vh',
     color: 'var(--muted)',
     fontWeight: 400,
+    textAlign: 'justify',
+    textAlignLast: 'left',
+    textJustify: 'inter-word',
+    hyphens: 'auto',
+    WebkitHyphens: 'auto',
+    msHyphens: 'auto',
   },
 
   accomplishmentsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '3vw',
+    gridTemplateColumns: '1fr',
+    gap: '1.8vh',
     padding: 0,
     margin: 0,
   },
@@ -98,21 +107,27 @@ export const styles: Record<string, CSSProperties> = {
     fontSize: 'clamp(13px, 0.95vw, 16px)',
     letterSpacing: '0.03em',
     textTransform: 'uppercase',
-    marginBottom: '4vh',
+    marginBottom: '2.2vh',
     color: 'var(--subtle)',
   },
 
   accomplishmentItem: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '1vh',
+    gap: '0.7vh',
     listStyle: 'none',
+    padding: '1.2rem 1.3rem',
+    border: '1px solid var(--line)',
+    borderRadius: '12px',
+    background: 'var(--surface-elevated)',
+    minHeight: 'auto',
   },
 
   itemHeader: {
     display: 'flex',
     alignItems: 'baseline',
-    gap: '10px',
+    gap: '12px',
+    marginBottom: '0.6vh',
   },
 
   itemNumber: {
@@ -125,18 +140,26 @@ export const styles: Record<string, CSSProperties> = {
     fontWeight: 600,
     fontSize: 'clamp(14px, 1.1vw, 16px)',
     color: 'var(--text)',
+    lineHeight: 1.35,
   },
 
   itemDescription: {
     fontSize: 'clamp(13px, 1vw, 15px)',
     lineHeight: 1.6,
     color: 'var(--muted)',
+    textAlign: 'justify',
+    textAlignLast: 'left',
+    textJustify: 'inter-word',
+    hyphens: 'auto',
+    WebkitHyphens: 'auto',
+    msHyphens: 'auto',
   },
 
   itemLinks: {
     display: 'flex',
     gap: '15px',
     fontSize: 'clamp(13px, 1vw, 15px)',
+    marginTop: '0.8vh',
   },
 
   link: {
@@ -152,23 +175,59 @@ export const styles: Record<string, CSSProperties> = {
     marginTop: '2vh',
     marginBottom: '4vh',
     color: 'var(--muted)',
+    textAlign: 'justify',
+    textAlignLast: 'left',
+    textJustify: 'inter-word',
+    hyphens: 'auto',
+    WebkitHyphens: 'auto',
+    msHyphens: 'auto',
   },
 
   footer: {
-    fontSize: 'clamp(14px, 1.1vw, 16px)',
-    lineHeight: 1.6,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    borderTop: 'none',
+    alignItems: 'flex-start',
+  },
+
+  footerButtonRow: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: '15px',
-    borderTop: 'none',
+    gap: '10px',
+    alignItems: 'center',
+  },
+
+  footerSocialButton: {
+    width: '48px',
+    height: '48px',
+    borderRadius: '10px',
+    border: '1px solid var(--control-border)',
+    background: 'var(--control-bg)',
+    color: 'var(--control-text)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    boxShadow: 'none',
+    backdropFilter: 'blur(12px)',
+    transition: 'transform 0.2s ease, background-color 0.2s ease',
+    textDecoration: 'none',
+    padding: '0',
+  },
+
+  footerSocialButtonSvg: {
+    width: '22px',
+    height: '22px',
+    display: 'block',
   },
 
   footerLink: {
     color: 'var(--text)',
     textDecoration: 'underline',
     fontWeight: 400,
-    width: 'fit-content',
+    transition: 'opacity 0.2s ease',
+    cursor: 'pointer',
   },
 
   bold: {
@@ -176,13 +235,11 @@ export const styles: Record<string, CSSProperties> = {
   },
 
   themeDock: {
-    position: 'absolute',
-    top: '0',
-    right: '0',
+    position: 'relative',
     zIndex: 10,
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
     gap: '10px',
   },
 
@@ -230,15 +287,17 @@ export const styles: Record<string, CSSProperties> = {
     borderRadius: '12px',
     backdropFilter: 'blur(12px)',
     boxShadow: '0 10px 24px rgba(0, 0, 0, 0.06)',
-    position: 'relative',
+    position: 'absolute',
     minWidth: '262px',
-    transformOrigin: 'top right',
+    transformOrigin: 'bottom right',
     transition: 'opacity 0.2s ease, transform 0.2s ease, max-height 0.2s ease, padding 0.2s ease, border-color 0.2s ease',
     maxHeight: '0px',
     opacity: 0,
     overflow: 'hidden',
     pointerEvents: 'none',
-    transform: 'translateY(-6px) scale(0.98)',
+    transform: 'translateY(-10px) scale(0.98)',
+    bottom: '56px',
+    right: '0',
   },
 
   themePaletteOpen: {
