@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Victor_Mono } from 'next/font/google'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const victorMono = Victor_Mono({
@@ -54,6 +55,7 @@ export default function RootLayout({
           {`(function(){try{var key='portfolio-theme';var theme=localStorage.getItem(key);if(theme==='midnight'||theme==='amber'){document.documentElement.dataset.theme=theme;}else{document.documentElement.removeAttribute('data-theme');}}catch(e){document.documentElement.removeAttribute('data-theme');}})();`}
         </Script>
         {children}
+        <Analytics />
       </body>
     </html>
   )
