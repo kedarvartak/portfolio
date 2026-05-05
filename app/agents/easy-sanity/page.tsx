@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import Link from 'next/link'
 import { styles } from '../../styles'
+import DocsSidebar from './docs-sidebar'
 
 const navGroups = [
   {
@@ -78,6 +78,7 @@ const envRows = [
   ['BROWSER_SCREENSHOTS_DIR', 'Directory for per-step screenshots', 'artifacts/screenshots'],
   ['BROWSER_DOWNLOADS_DIR', 'Directory for downloaded files', 'artifacts/downloads'],
   ['APP_MEMORY_DIR', 'Directory for persistent app-understanding memory', 'data/app_memory'],
+  ['EASY_SANITY_HOME', 'Base directory used by installed builds for user-owned runtime data', 'platform-specific app data dir'],
 ]
 
 const sessionTools = [
@@ -249,22 +250,25 @@ const memoryTools = [
   ['app_memory_list()', 'Lists all persisted repo memory entries.'],
 ]
 
-const quickStartCode = `./scripts/setup.sh`
+const uvxInstallBrowserCode = `uvx easy-sanity install-browser`
 
-const manualSetupCode = `curl -LsSf https://astral.sh/uv/install.sh | sh
+const uvxLaunchCode = `uvx easy-sanity`
+
+const pipxInstallCode = `pipx install easy-sanity
+easy-sanity install-browser`
+
+const sourceSetupCode = `./scripts/setup.sh`
+
+const sourceManualSetupCode = `curl -LsSf https://astral.sh/uv/install.sh | sh
 uv sync
-uv run playwright install chromium`
+uv run easy-sanity install-browser
+uv run easy-sanity`
 
 const codexConfigCode = `{
   "mcpServers": {
     "easy-sanity": {
-      "command": "uv",
-      "args": [
-        "--directory",
-        "/absolute/path/to/use_browser",
-        "run",
-        "main.py"
-      ],
+      "command": "uvx",
+      "args": ["easy-sanity"],
       "env": {
         "BROWSER_HEADLESS_DEFAULT": "true",
         "BROWSER_DEFAULT_TIMEOUT_MS": "45000",
@@ -277,14 +281,41 @@ const codexConfigCode = `{
   }
 }`
 
-const codexCliCode = `codex mcp add easy-sanity \\
-  --env BROWSER_HEADLESS_DEFAULT=true \\
-  --env BROWSER_DEFAULT_TIMEOUT_MS=45000 \\
-  --env BROWSER_REPORTS_DIR=artifacts/reports \\
-  --env BROWSER_SCREENSHOTS_DIR=artifacts/screenshots \\
-  --env BROWSER_DOWNLOADS_DIR=artifacts/downloads \\
-  --env APP_MEMORY_DIR=data/app_memory \\
-  -- uv --directory "/absolute/path/to/use_browser" run main.py`
+const pipxConfigCode = `{
+  "mcpServers": {
+    "easy-sanity": {
+      "command": "easy-sanity",
+      "args": [],
+      "env": {
+        "BROWSER_HEADLESS_DEFAULT": "true",
+        "BROWSER_DEFAULT_TIMEOUT_MS": "45000"
+      }
+    }
+  }
+}`
+
+const claudeCursorClineConfigCode = `{
+  "mcpServers": {
+    "browser-automation": {
+      "command": "easy-sanity",
+      "args": [],
+      "env": {
+        "BROWSER_HEADLESS_DEFAULT": "true",
+        "BROWSER_DEFAULT_TIMEOUT_MS": "45000"
+      }
+    }
+  }
+}`
+
+const sourceRunCode = `uv run easy-sanity`
+
+const pathsCode = `easy-sanity paths
+
+uv run easy-sanity paths`
+
+const troubleshootBrowserCode = `easy-sanity install-browser
+
+uvx easy-sanity install-browser`
 
 export const metadata = {
   title: 'Easy Sanity Documentation - Kedar Vartak',
@@ -362,32 +393,12 @@ export default function EasySanityDocsPage() {
   return (
     <div style={{ ...styles.container, ...styles.docsPageContainer }} className="layout-container docs-page-container">
       <main style={styles.docsMain} className="docs-main">
-        <footer style={{ ...styles.footer, marginBottom: '1.5rem' }} className="layout-footer">
-          <Link href="/agents" style={styles.footerLink}>
-            Back to agents
-          </Link>
-          <Link href="/" style={styles.footerLink}>
-            Back home
-          </Link>
-        </footer>
+        <div className="docs-mobile-message">
+          <p>Docs should be viewed from a larger screen.</p>
+        </div>
 
-        <div style={styles.docsShell} className="docs-shell">
-          <nav style={styles.docsNav} className="docs-nav">
-            <div style={styles.docsNavInner}>
-              {navGroups.map((group) => (
-                <div key={group.title} style={styles.docsNavGroup}>
-                  <p style={styles.docsNavHeading}>{group.title}</p>
-                  <div style={styles.docsNavLinks}>
-                    {group.items.map((item) => (
-                      <a key={item.id} href={`#${item.id}`} style={styles.docsNavLink}>
-                        {item.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </nav>
+        <div style={styles.docsShell} className="docs-shell docs-desktop-shell">
+          <DocsSidebar navGroups={navGroups} />
 
           <div style={styles.docsContent}>
             <section style={styles.docsHero}>
@@ -448,41 +459,59 @@ export default function EasySanityDocsPage() {
               </div>
             </DocSection>
 
-            <DocSection id="installation" eyebrow="Installation" title="Setup and quick start">
-              <div style={styles.docsTwoUp} className="docs-two-up">
-                <CodeBlock label="Quick start" code={quickStartCode} />
-                <CodeBlock label="Manual setup" code={manualSetupCode} />
-              </div>
-              <div style={styles.docsCallout}>
-                <h3 style={styles.docsCalloutTitle}>What the setup script does</h3>
-                <ul style={styles.docsBulletList}>
-                  <li>`uv sync`</li>
-                  <li>`uv run playwright install chromium`</li>
-                </ul>
+            <DocSection id="installation" eyebrow="Installation" title="Install and run Easy Sanity">
+              <p style={styles.docsParagraph}>
+                Easy Sanity supports three recommended setups: `uvx` for the fastest no-clone install, `pipx` for a
+                permanent global install, and source checkout for development.
+              </p>
+              <div style={styles.docsStack}>
+                <article style={styles.docsPane}>
+                  <h3 style={styles.docsPaneTitle}>Recommended: `uvx`</h3>
+                  <p style={styles.docsParagraph}>This is the simplest way to run Easy Sanity without cloning the repository.</p>
+                  <CodeBlock label="1. Install the Playwright browser" code={uvxInstallBrowserCode} />
+                  <CodeBlock label="2. Launch command" code={uvxLaunchCode} />
+                </article>
+                <article style={styles.docsPane}>
+                  <h3 style={styles.docsPaneTitle}>Permanent install: `pipx`</h3>
+                  <p style={styles.docsParagraph}>Use this if you want a globally available `easy-sanity` command.</p>
+                  <CodeBlock label="Install package and browser" code={pipxInstallCode} />
+                </article>
+                <article style={styles.docsPane}>
+                  <h3 style={styles.docsPaneTitle}>Development install from source</h3>
+                  <p style={styles.docsParagraph}>Use this when you are working on the repo itself.</p>
+                  <div style={styles.docsTwoUp} className="docs-two-up">
+                    <CodeBlock label="Quick setup" code={sourceSetupCode} />
+                    <CodeBlock label="Manual setup and run" code={sourceManualSetupCode} />
+                  </div>
+                  <div style={styles.docsCallout}>
+                    <h3 style={styles.docsCalloutTitle}>What the setup script does</h3>
+                    <ul style={styles.docsBulletList}>
+                      <li>`uv sync`</li>
+                      <li>`uv run easy-sanity install-browser`</li>
+                    </ul>
+                  </div>
+                </article>
               </div>
             </DocSection>
 
-            <DocSection id="configuration" eyebrow="Configuration" title="Codex and IDE configuration">
+            <DocSection id="configuration" eyebrow="Configuration" title="MCP client configuration">
               <p style={styles.docsParagraph}>
-                Codex does not use a plain `.env` file automatically for MCP server startup. The recommended pattern is to
-                pass runtime values through the MCP server `env` block.
+                The recommended MCP startup pattern is to pass runtime values through the server `env` block. `uvx`
+                is the default launch command for Codex, while `pipx` and installed builds use `easy-sanity` directly.
               </p>
               <div style={styles.docsStack}>
-                <CodeBlock label="MCP server config" code={codexConfigCode} />
-                <CodeBlock label="Codex CLI" code={codexCliCode} />
+                <CodeBlock label="Codex (`uvx`)" code={codexConfigCode} />
+                <CodeBlock label="Installed build (`easy-sanity`)" code={pipxConfigCode} />
+                <CodeBlock label="Claude Code / Cursor / Cline" code={claudeCursorClineConfigCode} />
               </div>
               <div style={styles.docsCallout}>
                 <h3 style={styles.docsCalloutTitle}>After setup</h3>
                 <ol style={styles.docsNumberList}>
-                  <li>Restart Codex.</li>
+                  <li>Restart the MCP client or IDE fully.</li>
                   <li>Confirm the server appears in MCP tools.</li>
                   <li>Run a smoke prompt such as `Use easy-sanity to open https://example.com and tell me the page title.`</li>
                 </ol>
               </div>
-              <p style={styles.docsParagraph}>
-                Example MCP configuration is also included in `mcp-config-example.json` and `README.md`. The same
-                `uv --directory ... run main.py` launch pattern works for Claude Code, Cursor, and similar IDEs with MCP support.
-              </p>
               <div style={styles.docsTableWrap}>
                 <table style={styles.docsTable}>
                   <thead>
@@ -508,13 +537,14 @@ export default function EasySanityDocsPage() {
                 </table>
               </div>
               <div style={styles.docsCallout}>
-                <h3 style={styles.docsCalloutTitle}>Important environment note</h3>
+                <h3 style={styles.docsCalloutTitle}>Runtime paths</h3>
                 <ul style={styles.docsBulletList}>
-                  <li>`.env.example` is a template only.</li>
-                  <li>The project reads real environment variables.</li>
-                  <li>If you want values loaded automatically from a `.env` file, you must load them externally or pass them through the MCP server config.</li>
+                  <li>Installed builds default to a user-owned app data directory.</li>
+                  <li>Source checkout runs keep using repo-local paths unless you override them with environment variables.</li>
+                  <li>Use `EASY_SANITY_HOME` if you want to relocate the installed runtime home.</li>
                 </ul>
               </div>
+              <CodeBlock label="Inspect active runtime paths" code={pathsCode} />
             </DocSection>
 
             <DocSection id="data-artifacts" eyebrow="Data Model" title="Saved data and runtime artifacts">
@@ -689,6 +719,7 @@ export default function EasySanityDocsPage() {
                 <li>Use `browser_get_dom_summary` when a page layout is complex.</li>
                 <li>Use tasks and profiles for repeated flows.</li>
                 <li>Use app memory when the agent also has access to the application repository.</li>
+                <li>Try the launch command directly in a terminal first if an MCP client is not showing tools.</li>
               </ul>
             </DocSection>
 
@@ -737,13 +768,23 @@ export default function EasySanityDocsPage() {
               </div>
             </DocSection>
 
-            <DocSection id="related-docs" eyebrow="Reference" title="Related docs">
-              <ul style={styles.docsBulletList}>
-                <li>`docs/roadmap.md`</li>
-                <li>`docs/features.md`</li>
-                <li>`docs/testcases.md`</li>
-                <li>`docs/versioning.md`</li>
-              </ul>
+            <DocSection id="related-docs" eyebrow="Support" title="Source run and troubleshooting">
+              <div style={styles.docsStack}>
+                <article style={styles.docsPane}>
+                  <h3 style={styles.docsPaneTitle}>Run from a source checkout</h3>
+                  <CodeBlock label="Repo launch" code={sourceRunCode} />
+                </article>
+                <article style={styles.docsPane}>
+                  <h3 style={styles.docsPaneTitle}>Troubleshooting</h3>
+                  <ul style={styles.docsBulletList}>
+                    <li>If `easy-sanity: command not found`, confirm `pipx` is on your shell path.</li>
+                    <li>If you used `uvx`, launch the server through `uvx easy-sanity` instead of `easy-sanity`.</li>
+                    <li>If browser launch fails, install Chromium first.</li>
+                    <li>If the MCP client starts but no tools appear, restart the IDE and re-check `command`, `args`, and `env`.</li>
+                  </ul>
+                  <CodeBlock label="Install Chromium when browser launch fails" code={troubleshootBrowserCode} />
+                </article>
+              </div>
             </DocSection>
 
             <DocSection id="summary" eyebrow="Summary" title="What Easy Sanity brings together">

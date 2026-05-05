@@ -500,23 +500,36 @@ export const styles: Record<string, CSSProperties> = {
     display: 'grid',
     gridTemplateColumns: '280px minmax(0, 1fr)',
     gap: '1.6rem',
-    alignItems: 'start',
+    alignItems: 'stretch',
   },
 
   docsNav: {
     position: 'sticky',
     top: '2rem',
     alignSelf: 'start',
+    height: 'calc(100vh - 4rem)',
   },
 
   docsNavInner: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '1.2rem',
+    justifyContent: 'space-between',
+    gap: '1.4rem',
     padding: '1rem',
     border: '1px solid var(--line)',
     borderRadius: '16px',
     background: 'var(--surface-elevated)',
+    height: '100%',
+    overflow: 'hidden',
+  },
+
+  docsNavSections: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.2rem',
+    minHeight: 0,
+    overflowY: 'auto',
+    paddingRight: '0.15rem',
   },
 
   docsNavGroup: {
@@ -546,6 +559,21 @@ export const styles: Record<string, CSSProperties> = {
     padding: '0.28rem 0.42rem',
     borderRadius: '8px',
     border: '1px solid transparent',
+    transition: 'background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease',
+  },
+
+  docsNavLinkActive: {
+    color: 'var(--text)',
+    border: '1px solid var(--line)',
+    background: 'var(--surface)',
+  },
+
+  docsNavFooter: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.65rem',
+    paddingTop: '0.9rem',
+    borderTop: '1px solid var(--line)',
   },
 
   docsContent: {

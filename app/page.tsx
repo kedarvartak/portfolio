@@ -136,7 +136,7 @@ export default function Home() {
               </a>
             </div>
           </li>
-          <li style={styles.accomplishmentItem}>
+          {/* <li style={styles.accomplishmentItem}>
             <div style={styles.itemHeader}>
               <span style={styles.itemNumber}>04</span>
               <span style={styles.itemTitle}>Contributions · freeCodeCamp</span>
@@ -154,7 +154,7 @@ export default function Home() {
                 freeCodeCamp.org
               </a>
             </div>
-          </li>
+          </li> */}
           <li style={styles.accomplishmentItem}>
             <div style={styles.itemHeader}>
               <span style={styles.itemNumber}>05</span>

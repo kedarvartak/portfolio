@@ -124,8 +124,43 @@ a {
   color: var(--text) !important;
 }
 
+.docs-nav-sections {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--muted) 30%, transparent) transparent;
+}
+
+.docs-nav-sections::-webkit-scrollbar {
+  width: 6px;
+}
+
+.docs-nav-sections::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.docs-nav-sections::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--muted) 28%, transparent);
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.docs-nav-sections::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--muted) 42%, transparent);
+}
+
 .docs-page-container {
   scroll-behavior: smooth;
+}
+
+.docs-mobile-message {
+  display: none;
+  min-height: 60vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.25rem;
+  font-size: clamp(18px, 5vw, 24px);
+  line-height: 1.6;
+  color: var(--muted);
 }
 
 @media (min-width: 769px) {
@@ -163,8 +198,17 @@ a {
     grid-template-columns: 1fr !important;
   }
 
+  .docs-desktop-shell {
+    display: none !important;
+  }
+
+  .docs-mobile-message {
+    display: flex !important;
+  }
+
   .docs-nav {
     position: static !important;
+    height: auto !important;
   }
 
   .docs-nav > div {
