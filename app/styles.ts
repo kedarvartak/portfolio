@@ -6,11 +6,11 @@ export const styles: Record<string, CSSProperties> = {
     maxWidth: '1500px',
     margin: '0 auto',
     padding: '4.5vh 3vw',
-    height: '100vh',
+    minHeight: '100vh',
     display: 'flex',
     flexDirection: 'row',
     gap: '4vw',
-    overflow: 'hidden',
+    overflow: 'visible',
     backgroundColor: 'var(--surface)',
     boxShadow: 'var(--shadow)',
     border: '1px solid var(--line)',
@@ -29,11 +29,11 @@ export const styles: Record<string, CSSProperties> = {
     flex: '1',
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
+    height: 'auto',
     justifyContent: 'flex-start',
     minWidth: 0,
     position: 'relative',
-    overflowY: 'auto',
+    overflowY: 'hidden',
     overflowX: 'hidden',
   },
 
@@ -97,10 +97,11 @@ export const styles: Record<string, CSSProperties> = {
 
   accomplishmentsGrid: {
     display: 'grid',
-    gridTemplateColumns: '1fr',
-    gap: '1.8vh',
+    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+    gap: '1rem',
     padding: 0,
     margin: 0,
+    alignContent: 'start',
   },
 
   sectionHeading: {
@@ -114,20 +115,20 @@ export const styles: Record<string, CSSProperties> = {
   accomplishmentItem: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '0.7vh',
+    gap: '0.55rem',
     listStyle: 'none',
-    padding: '1.2rem 1.3rem',
+    padding: '1rem 1.05rem',
     border: '1px solid var(--line)',
     borderRadius: '12px',
     background: 'var(--surface-elevated)',
-    minHeight: 'auto',
+    minHeight: '160px',
   },
 
   itemHeader: {
     display: 'flex',
     alignItems: 'baseline',
     gap: '12px',
-    marginBottom: '0.6vh',
+    marginBottom: '0.25rem',
   },
 
   itemNumber: {
@@ -145,7 +146,7 @@ export const styles: Record<string, CSSProperties> = {
 
   itemDescription: {
     fontSize: 'clamp(13px, 1vw, 15px)',
-    lineHeight: 1.6,
+    lineHeight: 1.5,
     color: 'var(--muted)',
     textAlign: 'justify',
     textAlignLast: 'left',
@@ -153,13 +154,19 @@ export const styles: Record<string, CSSProperties> = {
     hyphens: 'auto',
     WebkitHyphens: 'auto',
     msHyphens: 'auto',
+    display: '-webkit-box',
+    WebkitLineClamp: 3,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
   },
 
   itemLinks: {
     display: 'flex',
     gap: '15px',
     fontSize: 'clamp(13px, 1vw, 15px)',
-    marginTop: '0.8vh',
+    marginTop: 'auto',
+    paddingTop: '0.25rem',
+    flexWrap: 'wrap',
   },
 
   link: {
@@ -385,297 +392,425 @@ export const styles: Record<string, CSSProperties> = {
       'linear-gradient(135deg, #f7efe4 0%, #f7efe4 30%, #f0d6b4 30%, #f0d6b4 34%, #fffaf4 34%, #fffaf4 66%, #dfae76 66%, #dfae76 70%, #f3e2cc 70%, #f3e2cc 100%)',
   },
 
-  workoutMain: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0.75vh',
-    flex: 1,
-    minHeight: 0,
-    marginTop: '-3vh',
+  agentsIntro: {
+    fontSize: 'clamp(13px, 0.95vw, 15px)',
+    lineHeight: 1.6,
+    color: 'var(--muted)',
+    maxWidth: '44ch',
+    marginTop: '0.55rem',
   },
 
-  workoutBackLink: {
-    textDecoration: 'underline',
-    textUnderlineOffset: '3px',
-    color: 'var(--link)',
+  agentGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gap: '1.2rem',
+  },
+
+  agentCardFeatured: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.9rem',
+    padding: '1.15rem',
+    borderRadius: '14px',
+    border: '1px solid var(--line)',
+    background:
+      'linear-gradient(180deg, var(--surface-elevated) 0%, color-mix(in srgb, var(--surface) 92%, var(--accent) 8%) 100%)',
+    boxShadow: 'var(--shadow)',
+    maxWidth: '780px',
+  },
+
+  agentCardTop: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '12px',
+    flexWrap: 'wrap',
+  },
+
+  agentPill: {
     display: 'inline-flex',
     alignItems: 'center',
-    gap: 0,
-    padding: 0,
-    border: 'none',
-    background: 'transparent',
-    fontSize: '17px',
-    letterSpacing: '0.02em',
-    fontWeight: 500,
-    transition: 'opacity 0.2s ease',
-  },
-
-  workoutTitleRow: {
-    display: 'flex',
-    alignItems: 'baseline',
-    justifyContent: 'space-between',
-    gap: '12px',
-  },
-
-  workoutSubtleText: {
-    fontSize: 'clamp(12px, 0.95vw, 14px)',
-    color: 'var(--subtle)',
-  },
-
-  workoutKpiGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
-    gap: '12px',
-  },
-
-  workoutStravaGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-    gap: '12px',
-  },
-
-  workoutStravaCard: {
+    padding: '0.42rem 0.7rem',
+    borderRadius: '999px',
     border: '1px solid var(--line)',
-    background: 'var(--surface-elevated)',
-    padding: '12px',
-    borderRadius: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '4px',
-    minWidth: 0,
-  },
-
-  workoutStravaValue: {
-    fontSize: 'clamp(16px, 1.4vw, 22px)',
-    color: 'var(--text)',
-    fontWeight: 600,
-    lineHeight: 1.1,
-  },
-
-  workoutStatusText: {
-    fontSize: '12px',
-    color: 'var(--muted)',
-    marginBottom: '2px',
-  },
-
-  workoutKpiCard: {
-    border: '1px solid var(--line)',
-    background: 'var(--surface-elevated)',
-    padding: '14px',
-    borderRadius: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '6px',
-    minWidth: 0,
-  },
-
-  workoutKpiLabel: {
-    fontSize: '11px',
-    letterSpacing: '0.06em',
-    textTransform: 'uppercase',
-    color: 'var(--subtle)',
-  },
-
-  workoutKpiValue: {
-    fontSize: 'clamp(20px, 1.8vw, 28px)',
-    color: 'var(--text)',
-    fontWeight: 600,
-    lineHeight: 1.1,
-  },
-
-  workoutKpiHint: {
-    fontSize: '12px',
-    color: 'var(--muted)',
-  },
-
-  workoutPanelGrid: {
-    display: 'grid',
-    gridTemplateColumns: '1.35fr 1fr',
-    gap: '10px',
-    flex: 1,
-    minHeight: 0,
-  },
-
-  workoutPanel: {
-    border: '1px solid var(--line)',
-    background: 'var(--surface-elevated)',
-    borderRadius: '10px',
-    padding: '14px',
-    minHeight: 0,
-    overflow: 'hidden',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-
-  workoutPanelTitle: {
-    fontSize: '12px',
-    textTransform: 'uppercase',
-    letterSpacing: '0.06em',
-    color: 'var(--subtle)',
-  },
-
-  workoutTable: {
-    width: '100%',
-    borderCollapse: 'collapse',
-    tableLayout: 'fixed',
-  },
-
-  workoutTableHead: {
-    fontSize: '11px',
-    color: 'var(--subtle)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.04em',
-  },
-
-  workoutTableCell: {
-    fontSize: '13px',
-    color: 'var(--muted)',
-    padding: '8px 6px',
-    borderBottom: '1px solid var(--line)',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-  },
-
-  workoutTableCellStrong: {
-    color: 'var(--text)',
-    fontWeight: 600,
-  },
-
-  workoutList: {
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-    minHeight: 0,
-  },
-
-  workoutSessionItem: {
-    border: '1px solid var(--line)',
-    borderRadius: '8px',
-    padding: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '6px',
     background: 'var(--surface)',
-  },
-
-  workoutSessionHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap: '10px',
-  },
-
-  workoutSessionTitle: {
-    fontSize: '13px',
-    fontWeight: 600,
-    color: 'var(--text)',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-  },
-
-  workoutSessionMeta: {
-    fontSize: '12px',
     color: 'var(--subtle)',
+    fontSize: '11px',
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
   },
 
-  workoutBadgeRow: {
+  agentStatus: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    padding: '0.42rem 0.72rem',
+    borderRadius: '999px',
+    background: 'var(--accent)',
+    color: 'var(--accent-contrast)',
+    fontSize: '11px',
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+  },
+
+  agentCardTitleRow: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: '18px',
+  },
+
+  agentTitle: {
+    fontSize: 'clamp(30px, 3vw, 42px)',
+    fontWeight: 400,
+    lineHeight: 1.05,
+    color: 'var(--text)',
+  },
+
+  agentMetaRow: {
     display: 'flex',
     gap: '8px',
     flexWrap: 'wrap',
   },
 
-  workoutBadge: {
-    fontSize: '11px',
+  agentMetaItem: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    padding: '0.38rem 0.68rem',
+    borderRadius: '999px',
+    border: '1px solid var(--line)',
+    background: 'var(--surface)',
     color: 'var(--muted)',
-    border: '1px solid var(--line)',
-    borderRadius: '999px',
-    padding: '2px 8px',
-    background: 'var(--surface)',
+    fontSize: '11px',
+    letterSpacing: '0.04em',
+    textTransform: 'uppercase',
   },
 
-  workoutBarList: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-    minHeight: 0,
+  docsPageContainer: {
+    maxWidth: '1680px',
+    width: 'min(98vw, 1680px)',
+    gap: '2.6vw',
   },
 
-  workoutBarRow: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '6px',
-  },
-
-  workoutBarRowMeta: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: '8px',
-  },
-
-  workoutBarTrack: {
-    width: '100%',
-    height: '10px',
-    background: 'var(--surface)',
-    border: '1px solid var(--line)',
-    borderRadius: '999px',
-    overflow: 'hidden',
-  },
-
-  workoutBarFill: {
-    height: '100%',
-    background: 'var(--accent)',
-    opacity: 0.75,
-    borderRadius: '999px',
-    minWidth: '8px',
-  },
-
-  workoutWeekChart: {
-    height: '96px',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(8, minmax(0, 1fr))',
-    gap: '8px',
-    alignItems: 'end',
-    marginBottom: '4px',
-  },
-
-  workoutWeekColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '4px',
+  docsMain: {
+    flex: '1',
     minWidth: 0,
   },
 
-  workoutWeekColumnInner: {
-    width: '100%',
-    height: '76px',
+  docsShell: {
+    display: 'grid',
+    gridTemplateColumns: '280px minmax(0, 1fr)',
+    gap: '1.6rem',
+    alignItems: 'start',
+  },
+
+  docsNav: {
+    position: 'sticky',
+    top: '2rem',
+    alignSelf: 'start',
+  },
+
+  docsNavInner: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.2rem',
+    padding: '1rem',
+    border: '1px solid var(--line)',
+    borderRadius: '16px',
+    background: 'var(--surface-elevated)',
+  },
+
+  docsNavGroup: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.55rem',
+  },
+
+  docsNavHeading: {
+    fontSize: '11px',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
+    color: 'var(--subtle)',
+  },
+
+  docsNavLinks: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.28rem',
+  },
+
+  docsNavLink: {
+    color: 'var(--muted)',
+    textDecoration: 'none',
+    fontSize: '13px',
+    lineHeight: 1.45,
+    padding: '0.28rem 0.42rem',
+    borderRadius: '8px',
+    border: '1px solid transparent',
+  },
+
+  docsContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem',
+    minWidth: 0,
+  },
+
+  docsHero: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.8rem',
+    padding: '1.5rem',
+    border: '1px solid var(--line)',
+    borderRadius: '18px',
+    background: 'var(--surface-elevated)',
+  },
+
+  docsEyebrow: {
+    fontSize: '11px',
+    textTransform: 'uppercase',
+    letterSpacing: '0.12em',
+    color: 'var(--subtle)',
+  },
+
+  docsTitle: {
+    fontSize: 'clamp(34px, 3.2vw, 52px)',
+    lineHeight: 1.08,
+    fontWeight: 400,
+    color: 'var(--text)',
+  },
+
+  docsLead: {
+    fontSize: 'clamp(15px, 1.05vw, 17px)',
+    lineHeight: 1.75,
+    color: 'var(--muted)',
+    maxWidth: '72ch',
+  },
+
+  docsSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.9rem',
+    padding: '1.4rem 1.5rem',
+    border: '1px solid var(--line)',
+    borderRadius: '18px',
+    background: 'var(--surface-elevated)',
+    scrollMarginTop: '2rem',
+  },
+
+  docsSectionTitle: {
+    fontSize: 'clamp(24px, 2vw, 34px)',
+    lineHeight: 1.15,
+    color: 'var(--text)',
+    fontWeight: 500,
+  },
+
+  docsSectionBody: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem',
+  },
+
+  docsParagraph: {
+    fontSize: '15px',
+    lineHeight: 1.75,
+    color: 'var(--muted)',
+    maxWidth: '76ch',
+  },
+
+  docsBulletList: {
+    paddingLeft: '1.1rem',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.48rem',
+    color: 'var(--muted)',
+    lineHeight: 1.65,
+    fontSize: '14px',
+  },
+
+  docsNumberList: {
+    paddingLeft: '1.15rem',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.52rem',
+    color: 'var(--muted)',
+    lineHeight: 1.7,
+    fontSize: '14px',
+  },
+
+  docsCallout: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.8rem',
+    padding: '1rem 1.05rem',
+    borderRadius: '14px',
     border: '1px solid var(--line)',
     background: 'var(--surface)',
-    borderRadius: '8px',
+  },
+
+  docsCalloutTitle: {
+    fontSize: '14px',
+    fontWeight: 600,
+    color: 'var(--text)',
+  },
+
+  docsMiniGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+    gap: '0.8rem',
+  },
+
+  docsMiniCard: {
+    padding: '0.9rem 1rem',
+    borderRadius: '12px',
+    border: '1px solid var(--line)',
+    background: 'var(--surface)',
+  },
+
+  docsMiniCardText: {
+    fontSize: '13px',
+    lineHeight: 1.6,
+    color: 'var(--muted)',
+  },
+
+  docsStack: {
     display: 'flex',
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    padding: '3px',
+    flexDirection: 'column',
+    gap: '0.9rem',
   },
 
-  workoutWeekBar: {
-    width: '100%',
-    borderRadius: '5px',
-    background: 'var(--accent)',
-    opacity: 0.75,
-    minHeight: '8px',
+  docsModuleCard: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+    padding: '1rem 1.05rem',
+    borderRadius: '14px',
+    border: '1px solid var(--line)',
+    background: 'var(--surface)',
   },
 
-  workoutWeekLabel: {
-    fontSize: '10px',
+  docsModuleHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+  },
+
+  docsInlineCode: {
+    fontFamily: 'inherit',
+    fontSize: '13px',
+    color: 'var(--text)',
+    background: 'var(--surface)',
+    padding: '0.12rem 0.35rem',
+    borderRadius: '6px',
+    border: '1px solid var(--line)',
+  },
+
+  docsTwoUp: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+    gap: '1rem',
+  },
+
+  docsCodeShell: {
+    border: '1px solid var(--line)',
+    borderRadius: '16px',
+    background: 'var(--surface)',
+    overflow: 'hidden',
+  },
+
+  docsCodeLabel: {
+    padding: '0.72rem 0.9rem',
+    borderBottom: '1px solid var(--line)',
+    fontSize: '12px',
     color: 'var(--subtle)',
-    whiteSpace: 'nowrap',
+    textTransform: 'uppercase',
+    letterSpacing: '0.08em',
   },
+
+  docsPre: {
+    margin: 0,
+    padding: '1rem',
+    overflowX: 'auto',
+    fontSize: '13px',
+    lineHeight: 1.65,
+    color: 'var(--text)',
+  },
+
+  docsTableWrap: {
+    overflowX: 'auto',
+    border: '1px solid var(--line)',
+    borderRadius: '16px',
+    background: 'var(--surface)',
+  },
+
+  docsTable: {
+    width: '100%',
+    borderCollapse: 'collapse',
+  },
+
+  docsTableHead: {
+    textAlign: 'left',
+    padding: '0.85rem 0.95rem',
+    borderBottom: '1px solid var(--line)',
+    color: 'var(--subtle)',
+    fontSize: '12px',
+    textTransform: 'uppercase',
+    letterSpacing: '0.06em',
+    fontWeight: 500,
+  },
+
+  docsTableCell: {
+    padding: '0.85rem 0.95rem',
+    borderBottom: '1px solid var(--line)',
+    color: 'var(--muted)',
+    fontSize: '14px',
+    lineHeight: 1.6,
+    verticalAlign: 'top',
+  },
+
+  docsPane: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.8rem',
+    padding: '1rem 1.05rem',
+    borderRadius: '14px',
+    border: '1px solid var(--line)',
+    background: 'var(--surface)',
+  },
+
+  docsPaneTitle: {
+    fontSize: '16px',
+    lineHeight: 1.35,
+    color: 'var(--text)',
+    fontWeight: 600,
+  },
+
+  docsToolGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gap: '0.85rem',
+  },
+
+  docsToolCard: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.6rem',
+    padding: '1rem 1.05rem',
+    borderRadius: '14px',
+    border: '1px solid var(--line)',
+    background: 'var(--surface)',
+  },
+
+  docsToolName: {
+    fontSize: '15px',
+    lineHeight: 1.45,
+    color: 'var(--text)',
+    fontWeight: 600,
+  },
+
+  docsToolDescription: {
+    fontSize: '14px',
+    lineHeight: 1.65,
+    color: 'var(--muted)',
+  },
+
 }

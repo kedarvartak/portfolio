@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { styles } from './styles'
 import { ThemeSwitcher } from './components/theme-switcher'
 
@@ -30,16 +31,13 @@ export default function Home() {
             <a href="https://www.vit.edu/" target="_blank" rel="noopener noreferrer" className="inline-link">Vishwakarma Institute of Technology, Pune</a> in 26'.
           </p>
 
-          {/* <div style={styles.writeSection}>
-            I write{' '}
-            <a
-              href="/essays"
-              style={styles.link}
-            >
-              here
-            </a>
+          <div style={styles.writeSection}>
+            Exploring applied AI systems? Visit{' '}
+            <Link href="/agents" style={styles.link}>
+              Kedar&apos;s Agents
+            </Link>
             .
-          </div> */}
+          </div>
         </div>
 
         <footer style={styles.footer} className="layout-footer">
@@ -193,6 +191,20 @@ export default function Home() {
               >
                 tenancypassport.com
               </a>
+            </div>
+          </li>
+          <li style={styles.accomplishmentItem}>
+            <div style={styles.itemHeader}>
+              <span style={styles.itemNumber}>07</span>
+              <span style={styles.itemTitle}>Agents · Kedar&apos;s Agents</span>
+            </div>
+            <div style={styles.itemDescription}>
+              A small collection of AI systems I&apos;ve built for real workflows, starting with Easy Sanity, our regression testing agent.
+            </div>
+            <div style={styles.itemLinks}>
+              <Link href="/agents" style={styles.link}>
+                Open page
+              </Link>
             </div>
           </li>
         </ul>
