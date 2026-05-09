@@ -93,10 +93,10 @@ export default function Home() {
           <li style={styles.accomplishmentItem}>
             <div style={styles.itemHeader}>
               <span style={styles.itemNumber}>02</span>
-              <span style={styles.itemTitle}>Project · shared-memory-mcp</span>
+              <span style={styles.itemTitle}>Tool · shared-memory</span>
             </div>
             <div style={styles.itemDescription}>
-              Persistent memory for AI tools that lives across conversations and IDEs, while using fewer tokens. (88+ downloads)
+              Persistent memory for AI tools that lives across conversations and IDEs, while using fewer tokens. 
             </div>
             <div style={styles.itemLinks}>
               <a
