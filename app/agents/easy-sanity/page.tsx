@@ -188,7 +188,7 @@ const interactionTools: ToolTuple[] = [
 
 const waitTools: ToolTuple[] = [
   ['browser_wait_for_text(text, timeout_ms=10000)', 'Waits until visible text appears.'],
-  ['browser_wait_for_element(selector, timeout_ms=10000, state="visible")', 'Waits for an element to reach a given state such as `visible`, `attached`, `hidden`, or `detached`.'],
+  ['browser_wait_for_element(selector, timeout_ms=10000, state="visible")', 'Waits for an element reach a given state such as `visible`, `attached`, `hidden`, or `detached`.'],
   ['browser_wait_for_url(pattern, timeout_ms=10000)', 'Waits until the current URL matches a substring pattern.'],
   ['browser_wait_for_navigation(timeout_ms=10000)', 'Waits until page navigation/load completes.'],
   ['browser_wait_for_network_idle(timeout_ms=10000)', 'Waits until Playwright reports network-idle state.'],

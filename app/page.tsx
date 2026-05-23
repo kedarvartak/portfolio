@@ -1,214 +1,156 @@
 import Link from 'next/link'
-import { styles } from './styles'
-import { ThemeSwitcher } from './components/theme-switcher'
+import { ThemeToggle } from './components/theme-toggle'
+import { HoverChip } from './components/hover-chip'
+
+const highlights = [
+  {
+    label: 'Current',
+    content: (
+      <>
+        Software Engineer at{' '}
+        <a href="https://www.loopr.ai" target="_blank" rel="noopener noreferrer" className="inline-link">
+          Loopr.ai
+        </a>
+      </>
+    ),
+  },
+  {
+    label: 'Focus',
+    content: 'AI systems that make my everyday work easier and faster.',
+  },
+  {
+    label: 'Build',
+    content: (
+      <>
+        <HoverChip text="re-usable qa testing agent for browser-based apps">
+          <a
+            href="https://github.com/kedarvartak/easy-sanity"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-link"
+          >
+            Easy Sanity
+          </a>
+        </HoverChip>
+        ,{' '}
+        <HoverChip text="connect your ide to browser via cdp — eyes for your llms">
+          <a
+            href="https://github.com/kedarvartak/agent-vision"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-link"
+          >
+            Agent Vision
+          </a>
+        </HoverChip>
+        ,{' '}
+        <HoverChip text="shared repo-memory to sync context across all your coding agents">
+          <a
+            href="https://github.com/kedarvartak/multi-agent-memo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-link"
+          >
+            Multi Agent Memo
+          </a>
+        </HoverChip>
+        .
+      </>
+    ),
+  },
+  {
+    label: 'Background',
+    content: (
+      <>
+        AI Engineering,{' '}
+        <a href="https://www.vit.edu/" target="_blank" rel="noopener noreferrer" className="inline-link">
+          VIT Pune
+        </a>
+        .
+      </>
+    ),
+  },
+]
 
 export default function Home() {
   return (
-    <div style={styles.container} className="layout-container">
-      <aside style={styles.leftSidebar} className="layout-sidebar">
-        <div>
-          {/* <header style={styles.header}>
-            <Link href="/" style={styles.navLink}>
-              HOME
-            </Link>
-            <Link href="/essays" style={styles.navLink}>
-              WRITEUPS
-            </Link>
-          </header> */}
-
-          <h1 style={styles.title}>Kedar Vartak</h1>
-
-          <p style={styles.bio}>
-            I work at <a href="https://www.loopr.ai" target="_blank" rel="noopener noreferrer" className="inline-link">Loopr.ai</a> as a software engineer, tackling complex engineering
-            problems and keeping up with emergent technologies. My short term goal is to add a new skill to my{' '}
-            <a href="https://github.com/kedarvartak" target="_blank" rel="noopener noreferrer" className="inline-link">brain.md</a> every single week, while building a side‑hustle, money‑making
-            machine by the end of this year.
-          </p>
-
-          <p style={styles.bio}>
-            I am particularly interested in <strong style={styles.bold}>AI</strong> and keep up with the latest tools and
-            technologies in that space. I completed my Engineering in Artificial Intelligence from{' '}
-            <a href="https://www.vit.edu/" target="_blank" rel="noopener noreferrer" className="inline-link">Vishwakarma Institute of Technology, Pune</a> in 26'.
-          </p>
-
-          <div style={styles.writeSection}>
-            Exploring applied AI systems? Visit{' '}
-            <Link href="/agents" style={styles.link}>
-              Kedar&apos;s Agents
-            </Link>
-            .
-          </div>
-        </div>
-
-        <footer style={styles.footer} className="layout-footer">
-          <div style={styles.footerButtonRow} className="footer-button-row">
-            <a href="https://github.com/kedarvartak" target="_blank" rel="noopener noreferrer" style={styles.footerSocialButton} className="footer-social-button" title="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" style={styles.footerSocialButtonSvg}>
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-            <a href="https://linkedin.com/in/kedar-vartak20" target="_blank" rel="noopener noreferrer" style={styles.footerSocialButton} className="footer-social-button" title="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor" style={styles.footerSocialButtonSvg}>
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
-              </svg>
-            </a>
-            <a href="https://twitter.com/kedar2sexy" target="_blank" rel="noopener noreferrer" style={styles.footerSocialButton} className="footer-social-button" title="Twitter">
-              <svg viewBox="0 0 24 24" fill="currentColor" style={styles.footerSocialButtonSvg}>
-                <path d="M23.953 4.57a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 0 0-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 0 0-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.06a4.923 4.923 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.212.085 4.936 4.936 0 0 0 4.604 3.417a9.867 9.867 0 0 1-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 0 0 7.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0 0 24 4.59z" />
-              </svg>
-            </a>
-            <div style={styles.themeDock}>
-              <ThemeSwitcher />
-            </div>
-          </div>
-          <a href="mailto:kedarvartak01@gmail.com" style={styles.footerLink}>
-            kedarvartak01@gmail.com
-          </a>
-        </footer>
-      </aside>
-
-      <main style={styles.rightContent} className="layout-main">
-        {/* <p style={styles.sectionHeading}>Some of my latest work</p> */}
-
-        <ul style={styles.accomplishmentsGrid} className="layout-grid">
-          <li style={styles.accomplishmentItem}>
-            <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>01</span>
-              <span style={styles.itemTitle}>Work · Loopr.ai</span>
-            </div>
-            <div style={styles.itemDescription}>
-              Visual inspection platform that automates defect and abnormality detection. I operate as a generalist — engineering, testing, ideating, whatever the team needs.
-            </div>
-            <div style={styles.itemLinks}>
-              <a
-                href="https://www.loopr.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.link}
-              >
-                loopr.ai
-              </a>
-            </div>
-          </li>
-          <li style={styles.accomplishmentItem}>
-            <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>02</span>
-              <span style={styles.itemTitle}>Tool · shared-memory</span>
-            </div>
-            <div style={styles.itemDescription}>
-              Persistent memory for AI tools that lives across conversations and IDEs, while using fewer tokens. 
-            </div>
-            <div style={styles.itemLinks}>
-              <a
-                href="https://github.com/kedarvartak/shared-memory-mcp"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.link}
-              >
-                GitHub
-              </a>
-              <a
-                href="https://www.npmjs.com/package/shared-memory-mcp"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.link}
-              >
-                npm
-              </a>
-            </div>
-          </li>
-          <li style={styles.accomplishmentItem}>
-            <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>03</span>
-              <span style={styles.itemTitle}>Contributions · Astro</span>
-            </div>
-            <div style={styles.itemDescription}>
-              The content‑driven web framework. Fixed a failing test case and a hydration mismatch.
-            </div>
-            <div style={styles.itemLinks}>
-              <a
-                href="https://astro.build/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.link}
-              >
-                astro.build
-              </a>
-            </div>
-          </li>
-          {/* <li style={styles.accomplishmentItem}>
-            <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>04</span>
-              <span style={styles.itemTitle}>Contributions · freeCodeCamp</span>
-            </div>
-            <div style={styles.itemDescription}>
-              The open‑source learning platform. Added JavaScript tests to ensure user input produces the correct output.
-            </div>
-            <div style={styles.itemLinks}>
-              <a
-                href="https://www.freecodecamp.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.link}
-              >
-                freeCodeCamp.org
-              </a>
-            </div>
-          </li> */}
-          <li style={styles.accomplishmentItem}>
-            <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>05</span>
-              <span style={styles.itemTitle}>Freelancing & Consulting · Sangam India</span>
-            </div>
-            <div style={styles.itemDescription}>
-              Collective art startup where I build software for brands and businesses.
-            </div>
-            <div style={styles.itemLinks}>
-              <a
-                href="https://sangamindia.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.link}
-              >
-                sangamindia.in
-              </a>
-            </div>
-          </li>
-          <li style={styles.accomplishmentItem}>
-            <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>06</span>
-              <span style={styles.itemTitle}>Freelancing & Consulting · Tenancy Passport</span>
-            </div>
-            <div style={styles.itemDescription}>
-              AI‑powered UK property management platform; I help build frontend solutions for real‑world engineering problems.
-            </div>
-            <div style={styles.itemLinks}>
-              <a
-                href="https://tenancypassport.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.link}
-              >
-                tenancypassport.com
-              </a>
-            </div>
-          </li>
-          <li style={styles.accomplishmentItem}>
-            <div style={styles.itemHeader}>
-              <span style={styles.itemNumber}>07</span>
-              <span style={styles.itemTitle}>Agents · Kedar&apos;s Agents</span>
-            </div>
-            <div style={styles.itemDescription}>
-              A small collection of AI systems I&apos;ve built for real workflows, starting with Easy Sanity, our regression testing agent.
-            </div>
-            <div style={styles.itemLinks}>
-              <Link href="/agents" style={styles.link}>
-                Open page
+    <main className="split-shell">
+      <div className="split-container">
+        <aside className="split-sidebar">
+          <header className="home-nav" aria-label="Primary">
+            <div className="home-nav-links">
+              <Link href="/" className="home-nav-link home-nav-link-active">
+                start
+              </Link>
+              <Link href="/agents" className="home-nav-link">
+                agents
+              </Link>
+              <Link href="/writeups" className="home-nav-link">
+                writeups
               </Link>
             </div>
-          </li>
-        </ul>
-      </main>
-    </div>
+            <ThemeToggle />
+          </header>
+
+          <div className="home-intro-sidebar">
+            <img src="/img.jpeg" alt="Kedar Vartak" className="home-profile-img" />
+            <h1 className="home-title">Kedar Vartak</h1>
+            <p className="home-lead">
+              I build software with a bias toward practical systems, clean execution, and tools that compound over time.
+            </p>
+          </div>
+        </aside>
+
+        <section className="split-main">
+          <div className="home-intro">
+            <p className="home-paragraph">
+              I work at{' '}
+              <a href="https://www.loopr.ai" target="_blank" rel="noopener noreferrer" className="inline-link">
+                Loopr.ai
+              </a>{' '}
+              as a software engineer, tackling complex engineering problems and keeping up with emergent technologies. My
+              short term goal is to add a new skill to my{' '}
+              <a href="https://github.com/kedarvartak" target="_blank" rel="noopener noreferrer" className="inline-link">
+                brain.md
+              </a>{' '}
+              every single week, while building a side‑hustle, money‑making machine by the end of this year.
+            </p>
+            <p className="home-paragraph">
+              I care the most about AI infrastructure, memory and tooling. I prefer to call myself a generalist and not
+              specialist. I bench 210lbs, workout 365 days a year.
+            </p>
+          </div>
+
+          <div className="home-section">
+            <h2 className="home-section-title">Highlights</h2>
+            <ul className="home-highlights-list">
+              {highlights.map((item) => (
+                <li key={item.label} className="home-highlight-item">
+                  <span className="home-highlight-label">{item.label}</span>
+                  <div className="home-highlight-content">{item.content}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <footer className="home-footer">
+            <div className="home-footer-links">
+              <a href="mailto:kedarvartak01@gmail.com" className="inline-link">
+                email
+              </a>
+              <a href="https://github.com/kedarvartak" target="_blank" rel="noopener noreferrer" className="inline-link">
+                github
+              </a>
+              <a href="https://linkedin.com/in/kedar-vartak20" target="_blank" rel="noopener noreferrer" className="inline-link">
+                linkedin
+              </a>
+              <a href="https://twitter.com/kedar2sexy" target="_blank" rel="noopener noreferrer" className="inline-link">
+                twitter
+              </a>
+            </div>
+          </footer>
+        </section>
+      </div>
+    </main>
   )
 }

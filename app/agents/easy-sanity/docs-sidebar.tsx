@@ -91,6 +91,9 @@ export default function DocsSidebar({ navGroups }: { navGroups: NavGroup[] }) {
         </div>
 
         <footer style={styles.docsNavFooter} className="layout-footer">
+          <Link href="/writeups" style={styles.footerLink}>
+            Writeups
+          </Link>
           <Link href="/agents" style={styles.footerLink}>
             Back to agents
           </Link>
