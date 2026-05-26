@@ -15,13 +15,6 @@ Right now SWAP's dependency graph is runtime-constructed from Tree-sitter parses
 
 > **Graphify becomes SWAP's oracle for semantic priority.**
 
-These are two complementary layers of the same problem:
-
-| Layer | System | What it knows |
-|---|---|---|
-| Static understanding | Graphify | What symbols mean, why they exist, architectural role |
-| Live coordination | SWAP + multi-agent-memo | Who owns what, conflict resolution, shared agent context |
-
 ## Three Integration Layers
 
 ### Layer 1 - Semantic Symbol Importance
