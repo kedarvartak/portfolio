@@ -50,12 +50,12 @@ xychart-beta
 
 The U-shaped curve is consistent across model sizes and families — it's a structural property of how attention interacts with sequence position.
 
-| Prompt Structure | Task Position | Avg Accuracy |
-|---|---|---|
-| Task → Context → Format | First 20% | ~82% |
-| Context → Task → Format | Middle 40–60% | ~54% |
-| Context → Format → Task | Last 20% | ~74% |
-| Pure context dump, task implicit | N/A | ~31% |
+Brief facts from the study:
+
+- Task first: ~82% average accuracy.
+- Task buried in the middle: ~54%.
+- Task near the end: ~74%.
+- Implicit task in a context dump: ~31%.
 
 **The rule:** task — the highest-signal instruction — should always appear first. Context and background follow. This is the opposite of how most people write prompts naturally.
 
@@ -65,11 +65,9 @@ The U-shaped curve is consistent across model sizes and families — it's a stru
 
 Before optimizing, you need a measurement framework. Define prompt tokens in three categories:
 
-| Token Category | Definition | Examples |
-|---|---|---|
-| **Load-bearing** | Directly encodes task, constraints, format | "Summarize in 3 bullets", "Return JSON" |
-| **Context** | Necessary background the model can't infer | Schema definitions, user-specific facts |
-| **Noise** | Zero instruction signal, always removable | "Please", "I would like you to", role priming |
+- **Load-bearing:** task, constraints, and format, such as "Summarize in 3 bullets" or "Return JSON".
+- **Context:** background the model cannot infer, such as schemas or user-specific facts.
+- **Noise:** removable wording with no instruction signal, such as "please", "I would like you to", or generic role priming.
 
 **Signal-to-Noise Ratio (SNR):**
 
@@ -81,13 +79,11 @@ A well-optimized prompt targets **SNR ≥ 0.85**. Most first-draft prompts from 
 
 ### Common Anti-Patterns: Measured
 
-| Anti-Pattern | Example | Tokens | After Removal | Savings |
-|---|---|---|---|---|
-| Role priming | "You are a world-class expert software engineer with 20 years of experience..." | 18 | 0 | 100% |
-| Filler prefix | "Can you please help me to understand..." | 9 | 0 | 100% |
-| Semantic redundancy | "Be brief. Keep it short. Don't write too much. Concise responses only." | 14 | 2 ("Be concise.") | 86% |
-| Vague quantifier | "Give me some examples" | 5 | 5 ("Give me 3 examples") | 0% tokens, high quality gain |
-| Dead context | 200-token schema for a task that doesn't use it | 200 | 0 | 100% |
+- Role priming: "You are a world-class expert software engineer with 20 years of experience..." adds 18 removable tokens.
+- Filler prefix: "Can you please help me to understand..." adds 9 removable tokens.
+- Semantic redundancy: "Be brief. Keep it short. Don't write too much. Concise responses only." compresses to "Be concise.", saving ~86%.
+- Vague quantifier: "Give me some examples" costs the same as "Give me 3 examples", but the explicit version is more reliable.
+- Dead context: a 200-token unused schema can usually be removed entirely.
 
 ### Before / After on Real Prompts
 
@@ -135,13 +131,13 @@ next analysis step.
 
 Vague quantifiers are not just a style problem — they're a **reproducibility problem**. LLMs sample from a probability distribution at each step. Vague instructions don't constrain that distribution — they leave it wide, producing high variance across runs.
 
-| Instruction | Mean Output (tokens) | Std Dev | CV* |
-|---|---|---|---|
-| "some examples" | 187 | 94 | **0.50** |
-| "a few examples" | 142 | 71 | **0.50** |
-| "brief examples" | 203 | 118 | **0.58** |
-| "3 examples" | 89 | 12 | **0.13** |
-| "3 examples, 1 sentence each" | 47 | 6 | **0.13** |
+Observed variance:
+
+- "some examples": 187 mean output tokens, 94 standard deviation, CV 0.50.
+- "a few examples": 142 mean output tokens, 71 standard deviation, CV 0.50.
+- "brief examples": 203 mean output tokens, 118 standard deviation, CV 0.58.
+- "3 examples": 89 mean output tokens, 12 standard deviation, CV 0.13.
+- "3 examples, 1 sentence each": 47 mean output tokens, 6 standard deviation, CV 0.13.
 
 *CV = Coefficient of Variation. Lower = more consistent.*
 
@@ -155,13 +151,13 @@ Explicit quantifiers produce **4× lower output variance**. In production — if
 
 Kong et al. (2023) tested 12 role-priming templates against zero-shot baselines across reasoning tasks:
 
-| Condition | GSM8K Accuracy | MATH Accuracy | Tokens Added |
-|---|---|---|---|
-| No role priming | 78.2% | 34.1% | 0 |
-| "You are an expert mathematician" | 78.9% | 34.8% | 6 |
-| "You are a world-class problem solver" | 77.1% | 33.2% | 7 |
-| "You are a helpful assistant" | 77.4% | 33.9% | 5 |
-| Specific role + constraints | **81.3%** | **37.6%** | 18 |
+Role-priming results:
+
+- No role priming: 78.2% GSM8K, 34.1% MATH, no extra tokens.
+- "You are an expert mathematician": 78.9% GSM8K, 34.8% MATH, 6 extra tokens.
+- "You are a world-class problem solver": 77.1% GSM8K, 33.2% MATH, 7 extra tokens.
+- "You are a helpful assistant": 77.4% GSM8K, 33.9% MATH, 5 extra tokens.
+- Specific role plus constraints: 81.3% GSM8K, 37.6% MATH, 18 extra tokens.
 
 Generic superlative roles ("world-class", "expert") add tokens with near-zero accuracy improvement. Specific roles *with constraints* show measurable gains — but the gain comes from the **constraints**, not the role label.
 
@@ -175,25 +171,11 @@ Generic superlative roles ("world-class", "expert") add tokens with near-zero ac
 
 Jiang et al. introduced a compression pipeline using a small language model (GPT-2) to score the perplexity of each token. The key insight: **tokens a small model can predict with high confidence are redundant**. Removing them preserves meaning while reducing length.
 
-| Compression Ratio | Avg Performance Drop | Tokens Saved |
-|---|---|---|
-| 2× (50% compression) | -2.1% | 50% |
-| 4× (75% compression) | -6.8% | 75% |
-| 8× (87% compression) | -18.3% | 87% |
-| 20× (95% compression) | -31.2% | 95% |
-
 The 2× compression point is remarkable: **cut prompts in half with only a 2% performance drop**. The curve gets steep around 4× — beyond that, you're removing load-bearing tokens.
 
 ### Chain-of-Thought Efficiency
 
 Fu et al. (2023) found that CoT examples can be compressed by 60% without accuracy loss by removing narrative connective tissue and keeping only the logical steps:
-
-| CoT Style | Tokens | GSM8K Accuracy |
-|---|---|---|
-| Full narrative CoT | 847 | 87.3% |
-| Steps only (no connective) | 341 | 86.9% |
-| Compressed + structured | 298 | **87.1%** |
-| No CoT | 0 | 74.2% |
 
 The structured compressed version matches full CoT accuracy at 65% fewer tokens. "First", "therefore", "we can see" — that's all noise. The *structure* helps, not the prose.
 
@@ -202,14 +184,6 @@ The structured compressed version matches full CoT accuracy at 65% fewer tokens.
 ## 7. Output Tokens: The Higher-Stakes Problem
 
 Input tokens get all the attention, but output tokens are typically **2–4× more expensive** on most APIs. Output length is something you can control through prompt design.
-
-| Output Format Directive | Avg Output Reduction vs. Prose |
-|---|---|
-| "Bullet points only" | -38% |
-| "JSON only, no explanation" | -51% |
-| "One sentence per point" | -44% |
-| "No preamble, answer directly" | -22% |
-| "Table format" | -31% to +15%* |
 
 ### The Preamble Tax
 
@@ -253,28 +227,7 @@ flowchart TD
     M --> N[Optimized Prompt ✓]
 ```
 
----
-
-## 9. The Five-Dimension Scoring Rubric
-
-| Dimension | Low (0–3) | Mid (4–6) | High (7–9) | Optimal (10) |
-|---|---|---|---|---|
-| **Clarity** | Task ambiguous | Task stated with ambiguity | Task clearly stated | Task + all constraints unambiguous |
-| **Specificity** | All quantifiers vague | Some explicit | Most explicit, format stated | All quantifiers numeric, format explicit |
-| **Token Efficiency** | SNR < 0.4 | SNR 0.4–0.6 | SNR 0.6–0.85 | SNR > 0.85 |
-| **Structure** | Task buried in middle | Task in middle | Task near start | Task first, context middle, format last |
-| **Completeness** | Missing task verb | Has task, missing format | Has task + format | All sections present |
-
-| Total Score (out of 50) | Assessment |
-|---|---|
-| 0–20 | High-noise prompt. Expect inconsistent, verbose outputs. |
-| 21–30 | Moderate quality. Measurable inefficiencies. |
-| 31–40 | Good. Minor structural or specificity gaps. |
-| 41–50 | Optimized. Expect consistent, precise, token-efficient outputs. |
-
----
-
-## 10. Pre-Send Audit Checklist
+## 9. Pre-Send Audit Checklist
 
 Before sending any prompt, run this 30-second check:
 
