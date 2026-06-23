@@ -14,7 +14,7 @@ Every agent session carries a "context window" — the running memory the model 
 billed for on each step. A large, measurable slice of that memory is dead:
 files that were since deleted or changed, duplicated content, output never used
 again. The customer pays for that dead weight repeatedly, and stale source files
-sit in a third-party prompt long after they should. Omixy can measure this
+sit in a third-party prompt long after they should. Oximy can measure this
 fleet-wide, read-only, and report it three ways: wasted spend, who is actually
 using agents hard, and sensitive data lingering past its life. The number is
 built only from cases we can prove, so it holds up under scrutiny.
@@ -108,7 +108,7 @@ Two separate disciplines, often confused, both reduce to "we are conservative on
 
 **1. The fleet signal never mutates anything.** Measuring bloat across
 intercepted sessions is strictly read-only. We classify a copy and emit a count.
-No user session is touched, forked, or written. The same passive posture omixy
+No user session is touched, forked, or written. The same passive posture oximy
 uses on the wire applies here: we only ever read.
 
 **2. Even the cleaner, when it does run, never deletes a block.** The model
@@ -181,7 +181,7 @@ Per session, then rolled up across the fleet:
 | Depth distribution | bloat ratio vs. session length, across users | Adoption shape |
 
 The first two are the cost story, the fourth is the security story, and the last
-is the adoption story — all from one read-only pass over data omixy is already
+is the adoption story — all from one read-only pass over data oximy is already
 intercepting.
 
 ## Summary

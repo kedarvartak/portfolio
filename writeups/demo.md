@@ -83,7 +83,7 @@ that no Claude processes remain.
 
 ![task manager](/keyhole/claude-task-manager.png)
 
-Start the capture from `F:\omixy\keyhole` (or wherever you cloned the repo):
+Start the capture from `F:\oximy\keyhole` (or wherever you cloned the repo):
 
 ```powershell
 pktmon start --capture --pkt-size 0 --file-name "$env:TEMP\ai-capture.etl"
