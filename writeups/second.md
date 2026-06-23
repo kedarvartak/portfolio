@@ -1,10 +1,12 @@
 ---
-title: Not Breaking Certificate-Pinned Apps
+title: "Q2 — Cert-Pinned Apps: Detection Logic and the Right Outcome When You Can't Read a Flow"
 date: 2026-06-23
 excerpt: Why passive key logging is invisible to certificate pinning, and what visibility looks like for apps outside our scope.
 ---
 
 # Not Breaking Certificate-Pinned Apps
+
+> **Q2:** Don't break cert-pinned apps. Take something like Apple Music. How do you make sure a pinned app keeps working under your capture layer instead of failing its handshake? I want your detection logic for "this flow is pinned, route it differently," and your view on what the right outcome is when you can't safely read a flow.
 
 ## The short version
 

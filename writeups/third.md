@@ -1,10 +1,12 @@
 ---
-title: Tying a Decrypted Flow Back to Its Process
+title: "Q3 — Always Tie a Captured Flow to Its App: Where It Gets Hard and What Breaks Naive Approaches"
 date: 2026-06-23
 excerpt: Identity is free when you launch the app yourself. Here is the join needed when many apps are captured at once.
 ---
 
 # Tying a Decrypted Flow Back to Its Process
+
+> **Q3:** Always tie a captured flow to its app/process. A keylog file gives you keys but no identity. How do you guarantee every decrypted flow maps back to the exact process and binary that sent it, including short-lived connections? Tell me where this gets hard and what breaks naive approaches.
 
 ## The problem
 

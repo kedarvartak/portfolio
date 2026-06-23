@@ -1,10 +1,12 @@
 ---
-title: Approach: Passive Key Logging for Chromium Desktop Apps
+title: "Q1 — Passive Key Logging: How Far the Env-Var Approach Actually Reaches"
 date: 2026-06-23
 excerpt: How Keyhole captures TLS traffic from Electron apps without touching the connection — passive, no MITM, no cert presented.
 ---
 
 # Approach: Passive Key Logging for Chromium Desktop Apps
+
+> **Q1:** Make it work for all apps, not just the browser. Your demo relied on `SSLKEYLOGFILE` for a browser session. Walk me through how far that env-var approach actually reaches across every app on a machine, and where it stops. Where it stops, what's your fallback, and how do you decide which mechanism handles which traffic?
 
 ## What this is
 

@@ -1,10 +1,12 @@
 ---
-title: Context Bloat as a Fleet Signal
+title: "Q5 — Context Bloat as a Fleet Signal: Quantifying Wasted Context Window Cost for a CISO"
 date: 2026-06-23
 excerpt: Measuring the provably-dead fraction of a paid context window, fleet-wide, from a single read-only pass.
 ---
 
 # Context Bloat as a Fleet Signal
+
+> **Q5:** Your memory wedge, applied at the fleet level. You spent two months on lossless memory cleaning. Given intercepted session data across many users, how would you detect and quantify context bloat as an adoption and cost signal a CISO would care about?
 
 ## In one paragraph
 

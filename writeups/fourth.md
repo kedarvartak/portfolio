@@ -1,10 +1,12 @@
 ---
-title: Coverage Matrix: Which Apps Keyhole Can See
+title: "Q4 — Coverage Matrix: Which Apps Respect the TLS Key-Log Approach and Which Silently Don't"
 date: 2026-06-23
 excerpt: A TLS-stack breakdown of which apps honor SSLKEYLOGFILE and the traps that catch you when you assume they all do.
 ---
 
 # Coverage Matrix: Which Apps Keyhole Can See
+
+> **Q4:** Coverage matrix. Terminals, browsers, Electron apps, native CLIs, the works. Which actually respect your approach and which silently don't? I'd like the matrix derived from how these apps link their TLS stack, not a guess, with the notable traps called out.
 
 ## The matrix
 

@@ -1,10 +1,12 @@
 ---
-title: Windows Demo: Capturing Claude Desktop Traffic
+title: "Extra — Windows Demo: Capturing Claude Desktop Traffic"
 date: 2026-06-23
 excerpt: Step-by-step: build the binary, log TLS keys, capture with pktmon, and read your own chat messages from the Claude desktop app.
 ---
 
 # Windows Demo: Capturing Claude Desktop Traffic
+
+> **Extra:** End-to-end walkthrough of the scoped Windows capture — from building the binary through reading your own Claude desktop chat in plaintext.
 
 Capture and decrypt a single Chromium desktop app (e.g. Claude desktop) on Windows.
 Run an **elevated** PowerShell (Run as administrator) — `pktmon` requires it.

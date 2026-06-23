@@ -1,10 +1,12 @@
 ---
-title: From Scoped to Global Capture
+title: "Extra — From Scoped to Global Capture"
 date: 2026-06-23
 excerpt: One environment variable change turns Keyhole into a session-wide listener. How key separation works when every Chromium app shares one log.
 ---
 
 # From Scoped to Global Capture
+
+> **Extra:** How one environment variable change turns Keyhole into a session-wide listener, and how key separation works when every Chromium app shares one log.
 
 ## The question
 
