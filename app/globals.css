@@ -533,6 +533,97 @@ body {
   font-size: 0.85rem;
 }
 
+/* Tables */
+
+.markdown-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.markdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.markdown-table th {
+  text-align: left;
+  padding: 0.7rem 0.95rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--subtle);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.markdown-table td {
+  padding: 0.7rem 0.95rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  vertical-align: top;
+}
+
+.markdown-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown-table tbody tr:hover td {
+  background-color: color-mix(in srgb, var(--line) 30%, transparent);
+}
+
+/* Images */
+
+.markdown-img {
+  display: block;
+  max-width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.markdown-img-inline {
+  max-width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+/* Blockquotes */
+
+.markdown-blockquote {
+  border-left: 2px solid var(--line);
+  padding: 0.5rem 1rem;
+  color: var(--subtle);
+  font-style: italic;
+  line-height: 1.75;
+}
+
+/* Horizontal rule */
+
+.markdown-hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0.25rem 0;
+}
+
+/* Links */
+
+.markdown-link {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: opacity 0.2s ease;
+}
+
+.markdown-link:hover {
+  opacity: 0.7;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
