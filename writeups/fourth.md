@@ -35,7 +35,7 @@ excerpt: A TLS-stack breakdown of which apps honor SSLKEYLOGFILE and the traps t
 - **curl gives two different answers.** Same command works on Linux (OpenSSL), fails on Windows (Schannel) — the TLS backend decides, not the command.
 - **An app already running is missed.** Re-launching just wakes the old instance, which never saw the variable, so the log stays empty — always fully quit first.
 - **A terminal captures nothing by itself.** You're capturing the program you run inside it, and `ssh`/`scp` aren't even TLS, so they're out entirely.
-- **Go is its own world.** The biggest CLI family (docker, kubectl, gh) silently ignores the switch because it doesn't use OpenSSL at all.
+- **Go is its own world.** The CLI family (docker, kubectl, gh) silently ignores the switch because it doesn't use OpenSSL at all.
 
 ## How this maps to our scope
 

@@ -27,19 +27,11 @@ Once many apps are captured at once (see the future scope post), identity needs 
 ```
 client_random  ->  4-tuple  ->  PID  ->  signed binary
 ```
+Detailed approach is mentioned in https://kedarvartak.com/writeups/fifth (Future Scope)
 
 The capture gives both the `client_random` (to find the keys) and the 4-tuple (to find the
 process); the OS tells you which process owned that socket; that names the binary.
 
-## Why the shortcuts break
-
-| Shortcut | Why it fails | Fix |
-|----------|--------------|-----|
-| Poll `/proc/net/tcp` | misses sockets that open and close between polls | capture at `connect()` |
-| `4-tuple -> PID` map | ports get reused by another process | key on `(4-tuple, time)` |
-| PID as identity | PIDs recycle to a different binary | key on `(PID, start-time)` |
-| Read exe later | short process already exited | hash the binary at connect |
-| Trust the socket owner | a broker (browser network service, VPN) owns it for others | report the broker honestly |
 
 ## Summary
 
