@@ -708,6 +708,10 @@ a {
     padding: 2rem 1.25rem 4rem;
   }
 
+  .home-nav-links {
+    gap: 0.9rem;
+  }
+
   .home-title,
   .docs-title {
     font-size: 2.2rem;
@@ -765,5 +769,21 @@ a {
 
   .docs-pre {
     padding: 1rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .split-container {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .home-nav {
+    font-size: 0.78rem;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  .home-nav-links {
+    gap: 0.6rem;
   }
 }
