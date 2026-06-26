@@ -198,12 +198,12 @@ The theme was directly inspired from oximy.com
 
 
 7. Open the run result screen.
-![alt text](image.png)
+![alt text](/writeups/image.png)
 
 8. Show the executed path, condition branch, simulated escalation action, drafted reply, and final output.
 
-![alt text](image-1.png)
-![alt text](image-2.png)
+![alt text](/writeups/image-1.png)
+![alt text](/writeups/image-2.png)
 
 
 9. Show an edge case by entering invalid JSON in the run modal or by compiling a prompt that produces invalid model output.
