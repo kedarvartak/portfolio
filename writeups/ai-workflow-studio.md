@@ -1,3 +1,9 @@
+---
+title: "Live Build: AI Workflow Studio"
+date: 2026-06-27
+excerpt: Building a full-stack AI workflow builder where natural language compiles into executable step graphs — NestJS, React Flow, SQLite, and OpenRouter.
+---
+
 # Live Build: AI Workflow Studio
 
 ## What We Built
