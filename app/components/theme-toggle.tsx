@@ -1,5 +1,6 @@
 'use client'
 
+import posthog from 'posthog-js'
 import { useEffect, useState } from 'react'
 
 export function ThemeToggle() {
@@ -21,6 +22,9 @@ export function ThemeToggle() {
     setTheme(next)
     document.documentElement.dataset.theme = next
     localStorage.setItem('portfolio-theme', next)
+    if (posthog.__loaded) {
+      posthog.capture('theme_toggled', { theme: next })
+    }
   }
 
   return (

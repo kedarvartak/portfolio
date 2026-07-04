@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Victor_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { PostHogProvider } from './components/posthog-provider'
 import './globals.css'
 
 const victorMono = Victor_Mono({
@@ -50,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={victorMono.variable}>
-        {children}
+        <PostHogProvider>{children}</PostHogProvider>
         <Analytics />
       </body>
     </html>

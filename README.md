@@ -16,14 +16,18 @@ The source for [kedarvartak.com](https://www.kedarvartak.com): my personal portf
 - Hand-rolled Markdown rendering with Mermaid support
 - Framer Motion
 - Vercel Analytics
+- PostHog product analytics for pageviews, route changes, outbound/internal link clicks, page leaves, and theme toggles
 - Static generation for writeups
 
 ## Run locally
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
+
+Add your PostHog project key to `.env.local` as `NEXT_PUBLIC_POSTHOG_KEY`. Set `NEXT_PUBLIC_POSTHOG_HOST` to your PostHog region (`https://us.i.posthog.com` or `https://eu.i.posthog.com`).
 
 Open [http://localhost:3000](http://localhost:3000).
 
