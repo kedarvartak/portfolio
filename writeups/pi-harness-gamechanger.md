@@ -30,6 +30,79 @@ That matters because the hard part of coding agents is no longer only model inte
 | Extensibility | Every team has different rituals | Add tools, commands, UI, prompts, skills, providers, and package them |
 | Context control | Long tasks fail when memory becomes mush | Context files, compaction, explicit includes, and visible usage make context operational |
 
+## The technical depth: how Pi handles memory
+
+The most underrated part of Pi is that "memory" is not treated as vibes. It is treated as a session data structure plus a context-building policy.
+
+Pi stores sessions as JSONL files. Each line is an entry: user message, assistant message, tool result, bash execution, model change, thinking-level change, compaction, branch summary, label, or extension state. Entries have `id` and `parentId`, which means a session is not just a flat transcript. It is a tree.
+
+That one design choice unlocks a lot:
+
+| Memory primitive | What Pi stores | Why it matters |
+|---|---|---|
+| Append-only session log | Every meaningful event as JSONL | You can inspect, export, replay, or debug the path that produced a change |
+| Parent-linked entries | `id` / `parentId` tree | Branching does not destroy history |
+| Compaction entries | Summary + `firstKeptEntryId` + `tokensBefore` | Old context can be compressed without deleting the original trail |
+| Branch summaries | Summary of the branch you are leaving | Switching approaches does not mean losing the context of prior exploration |
+| File-operation details | Read and modified files tracked through summaries | The agent retains operational memory, not just prose memory |
+| Custom entries/messages | Extension-controlled state and injected context | Teams can persist their own workflow memory |
+
+![Excalidraw-style memory architecture for Pi sessions and compaction](/pi-harness/pi-memory-architecture.svg)
+
+## Compaction is not just summarization
+
+Most people hear "context compaction" and imagine a generic summary. Pi's version is more deliberate.
+
+Auto-compaction triggers when the current context gets too close to the model's context window. The rule is roughly:
+
+```text
+contextTokens > contextWindow - reserveTokens
+```
+
+By default, Pi reserves around `16k` tokens for the model's next response and keeps around `20k` recent tokens unsummarized. That means the newest work stays high-fidelity while older work is compressed into a structured summary.
+
+The flow looks like this:
+
+1. Walk backward from the latest message.
+2. Keep recent messages until the `keepRecentTokens` budget is reached.
+3. Choose a safe cut point, normally at a turn boundary.
+4. Summarize older messages into a structured compaction entry.
+5. Reload the session context as: system prompt + compaction summary + kept recent messages.
+
+The detail I like: Pi avoids cutting at tool results. Tool results must stay paired with their tool calls, otherwise the model receives orphaned evidence. If a single giant turn exceeds the recent-token budget, Pi can split the turn and summarize the early prefix separately.
+
+That is memory engineering, not just prompt trimming.
+
+## What the model actually sees
+
+After compaction, the model does not receive the entire historical transcript. It receives a reconstructed working set:
+
+| Context layer | Included in model prompt? | Purpose |
+|---|---:|---|
+| System prompt and project context | Yes | Rules, repo instructions, global behavior |
+| Latest compaction summary | Yes | Compressed long-term memory |
+| Recent messages from `firstKeptEntryId` onward | Yes | High-resolution short-term memory |
+| Full old JSONL entries | No, unless revisited | Audit trail and recoverability |
+| Extension custom entries | No by default | Persistent app/plugin state |
+| Extension custom messages | Yes, if injected | Team-specific contextual memory |
+
+This separation is a big deal. Pi preserves **historical truth** on disk while sending the model a **budgeted operational memory**. You get recoverability without paying the full token cost every turn.
+
+## Branch memory: why trees beat transcripts
+
+Linear transcripts are bad at real engineering. You try one approach, hit a wall, back up, explore another approach, then realize one decision from the abandoned branch still matters.
+
+Pi's `/tree` model handles this by letting you navigate to earlier entries and continue from there. When you leave a branch, Pi can create a branch summary: it finds the common ancestor, summarizes the path you are leaving, and carries that context into the new branch.
+
+| Scenario | Linear chat memory | Pi session tree |
+|---|---|---|
+| Try approach A, then approach B | A pollutes B or gets lost | A and B become separate branches |
+| Need to revisit a prior decision | Scroll and pray | Jump to the entry in `/tree` |
+| Want a clean alternate implementation | Start a new chat | Fork or clone from the exact point |
+| Need auditability | Export a transcript | Inspect the JSONL event trail |
+
+This is why Pi's memory feels more like version control than chat history.
+
 ## Why this is different from a feature-heavy agent
 
 Feature-heavy agents usually bake in one workflow. That feels impressive on day one, but it becomes a tax when your repo, team, CI, security model, or debugging style is different.

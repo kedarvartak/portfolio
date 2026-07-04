@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#fffaf0"/>
+  <style>
+    .txt{font-family:"Comic Sans MS","Virgil",cursive;fill:#111827;font-size:28px}.small{font-size:20px;fill:#374151}.box{fill:#fff;stroke:#111827;stroke-width:4;rx:22}.soft{fill:#e0f2fe;stroke:#0369a1;stroke-width:4;rx:22}.sum{fill:#fef3c7;stroke:#92400e;stroke-width:4;rx:22}.keep{fill:#dcfce7;stroke:#166534;stroke-width:4;rx:22}.drop{fill:#fee2e2;stroke:#991b1b;stroke-width:3;stroke-dasharray:10 8;rx:18}.arrow{stroke:#111827;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}.thin{stroke-width:3}</style>
+  <defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10" fill="none" stroke="#111827" stroke-width="2"/></marker></defs>
+
+  <text x="72" y="70" class="txt" font-size="42">Pi memory: append-only history, compacted context</text>
+
+  <rect x="80" y="125" width="1040" height="96" class="box"/>
+  <text x="120" y="170" class="txt">Session JSONL tree</text>
+  <text x="405" y="170" class="small">entries link with id / parentId: user, assistant, tool, model changes, labels, compactions</text>
+  <text x="120" y="202" class="small">The full trail stays on disk even when the model sees only a compressed working set.</text>
+
+  <rect x="100" y="300" width="155" height="82" class="box"/><text x="140" y="350" class="txt small">old turn</text>
+  <rect x="275" y="300" width="155" height="82" class="box"/><text x="315" y="350" class="txt small">tools</text>
+  <rect x="450" y="300" width="155" height="82" class="box"/><text x="486" y="350" class="txt small">decision</text>
+  <rect x="625" y="300" width="155" height="82" class="keep"/><text x="660" y="338" class="txt small">recent</text><text x="662" y="366" class="txt small">20k-ish</text>
+  <rect x="800" y="300" width="155" height="82" class="keep"/><text x="835" y="350" class="txt small">current</text>
+  <rect x="975" y="300" width="115" height="82" class="soft"/><text x="1004" y="350" class="txt small">reply</text>
+
+  <path d="M255 341 L275 341" class="arrow thin"/><path d="M430 341 L450 341" class="arrow thin"/><path d="M605 341 L625 341" class="arrow thin"/><path d="M780 341 L800 341" class="arrow thin"/><path d="M955 341 L975 341" class="arrow thin"/>
+
+  <path d="M180 382 C180 455, 365 455, 520 382" class="arrow"/>
+  <rect x="250" y="465" width="300" height="90" class="sum"/>
+  <text x="288" y="505" class="txt small">CompactionEntry</text>
+  <text x="285" y="535" class="txt small">summary + firstKeptEntryId</text>
+
+  <path d="M550 510 C690 570, 875 540, 920 382" class="arrow"/>
+  <rect x="670" y="590" width="420" height="82" class="soft"/>
+  <text x="705" y="628" class="txt small">Model context = system + summary + kept recent messages</text>
+  <text x="705" y="656" class="txt small">Reserve tokens protect room for the next answer.</text>
+
+  <rect x="95" y="590" width="430" height="82" class="drop"/>
+  <text x="125" y="628" class="txt small">Not sent every turn ≠ deleted</text>
+  <text x="125" y="656" class="txt small">Old entries remain inspectable, branchable, exportable.</text>
+</svg>
