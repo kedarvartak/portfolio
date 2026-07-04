@@ -39,16 +39,49 @@ export default function AgentsPage() {
               This page is where I collect the agents I&apos;ve built. I care less about flashy demos and more about systems that reduce toil, catch regressions, and help engineers move faster with confidence.
             </p>
             <p className="home-paragraph">
-              The current lineup starts with <strong>Easy Sanity</strong>, our regression testing agent designed to sanity-check product flows before humans have to chase the same bugs twice.
+              The current lineup spans agent-context observability, regression testing, browser vision, and shared
+              memory—including <strong>Glassbox</strong>, which makes the contents and cost of a coding agent&apos;s
+              context inspectable.
             </p>
           </div>
         </aside>
 
         <section className="split-main">
           <div className="home-section">
-            <h2 className="home-section-title">Featured agent</h2>
+            <h2 className="home-section-title">Featured agents</h2>
             
             <div className="agents-grid">
+              <article className="agent-card">
+                <div className="agent-card-top">
+                  <span className="agent-pill">Agent Context Inspector</span>
+                </div>
+
+                <div>
+                  <h3 className="agent-title">Glassbox</h3>
+                  <p className="agent-description">
+                    A local-first inspector for the context coding agents actually carry. Glassbox exposes stale,
+                    duplicated, and deleted-file content, then creates a validated, losslessly cleaned session you can
+                    resume without modifying the original.
+                  </p>
+                </div>
+
+                <div className="agent-meta-row">
+                  <span className="agent-meta-item">Context x-ray</span>
+                  <span className="agent-meta-item">Lossless session fork</span>
+                  <span className="agent-meta-item">Local-first and read-only</span>
+                </div>
+
+                <div>
+                  <Link href="/writeups/glassbox-agent-context" className="inline-link">
+                    Read the technical writeup →
+                  </Link>
+                  {' · '}
+                  <a href="https://github.com/kedarvartak/glassbox" target="_blank" rel="noopener noreferrer" className="inline-link">
+                    View on GitHub →
+                  </a>
+                </div>
+              </article>
+
               <article className="agent-card">
                 <div className="agent-card-top">
                   <span className="agent-pill">Regression Testing Agent</span>

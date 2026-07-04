@@ -22,6 +22,17 @@ const highlights = [
     label: 'Build',
     content: (
       <>
+        <HoverChip text="inspect and losslessly clean the context carried by coding agents">
+          <a
+            href="https://github.com/kedarvartak/glassbox"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-link"
+          >
+            Glassbox
+          </a>
+        </HoverChip>
+        ,{' '}
         <HoverChip text="re-usable qa testing agent for browser-based apps">
           <a
             href="https://github.com/kedarvartak/easy-sanity"

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Why Glassbox uses a lossless fork</title>
+  <desc id="desc">A hand-drawn comparison showing that direct deletion can break transcript structure, summary compaction can lose detail, and a Glassbox fork preserves structure while tombstoning proven garbage.</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-6%" width="110%" height="112%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="53" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto" markerUnits="strokeWidth"><path d="M1 1.5 Q6 4.5 10 6.5 Q6 8.4 1.5 11" fill="none" stroke="#1e1e1e" stroke-width="1.5" stroke-linecap="round"/></marker>
+    <style>
+      .hand{font-family:"Comic Sans MS","Comic Relief","Segoe Print","Bradley Hand",cursive;fill:#1e1e1e}.title{font-size:40px;font-weight:700}.label{font-size:25px;font-weight:700}.note{font-size:18px}.tiny{font-size:16px}
+      .shape{stroke:#1e1e1e;stroke-width:3.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough)}.echo{fill:none;stroke:#1e1e1e;stroke-width:1.05;opacity:.4;stroke-linecap:round}.line{fill:none;stroke:#1e1e1e;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);filter:url(#rough)}.cross{fill:none;stroke:#c92a2a;stroke-width:5;stroke-linecap:round;filter:url(#rough)}
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#fffdf7"/>
+  <text x="67" y="66" class="hand title">Three ways to make a context window smaller</text>
+  <path d="M68 80 Q382 86 698 79" fill="none" stroke="#868e96" stroke-width="2.2" stroke-linecap="round" filter="url(#rough)"/>
+
+  <g>
+    <path d="M70 132 Q59 134 59 146 L58 600 Q59 614 73 615 L352 613 Q366 612 367 598 L365 145 Q364 133 351 132Z" fill="#fff5f5" class="shape"/>
+    <text x="112" y="177" class="hand label">Delete blocks</text><text x="102" y="207" class="hand tiny">small, but structurally unsafe</text>
+    <rect x="111" y="260" width="202" height="62" rx="12" fill="#d0ebff" class="shape"/><text x="144" y="297" class="hand note">tool_use: Read</text>
+    <rect x="111" y="355" width="202" height="62" rx="12" fill="#ffc9c9" class="shape"/><text x="135" y="392" class="hand note">tool_result: bytes</text>
+    <path d="M102 346 Q211 383 323 427" class="cross"/><path d="M323 346 Q211 383 102 427" class="cross"/>
+    <path d="M212 323 L212 347" class="line"/>
+    <text x="104" y="482" class="hand note">orphaned tool call</text><text x="104" y="512" class="hand note">dangling parent</text><text x="104" y="542" class="hand note">resume may fail</text>
+  </g>
+
+  <g>
+    <path d="M426 132 Q415 134 415 146 L414 600 Q415 614 429 615 L708 613 Q722 612 723 598 L721 145 Q720 133 707 132Z" fill="#fff9db" class="shape"/>
+    <text x="456" y="177" class="hand label">Summarize all</text><text x="454" y="207" class="hand tiny">compact, but interpretive</text>
+    <rect x="474" y="258" width="190" height="70" rx="12" fill="#d0ebff" class="shape"/><text x="513" y="299" class="hand note">full context</text>
+    <path d="M569 330 C570 359 570 375 570 400" class="line"/>
+    <path d="M486 410 Q477 411 477 422 L477 489 Q478 500 489 501 L651 499 Q662 498 663 487 L661 421 Q660 411 650 410Z" fill="#ffec99" class="shape"/>
+    <text x="521" y="446" class="hand label">summary</text><text x="504" y="475" class="hand tiny">which details survived?</text>
+    <text x="458" y="546" class="hand note">meaning compressed</text><text x="458" y="576" class="hand note">accuracy may drift</text>
+  </g>
+
+  <g>
+    <path d="M782 132 Q771 134 771 146 L770 600 Q771 614 785 615 L1110 613 Q1124 612 1125 598 L1123 145 Q1122 133 1109 132Z" fill="#ebfbee" stroke="#2b8a3e" class="shape"/>
+    <text x="820" y="177" class="hand label">Glassbox fork</text><text x="813" y="207" class="hand tiny">proof-based + structurally valid</text>
+    <rect x="831" y="250" width="234" height="59" rx="12" fill="#d0ebff" class="shape"/><text x="874" y="286" class="hand note">tool_use: Read</text>
+    <path d="M948 311 L948 339" class="line"/>
+    <rect x="831" y="350" width="234" height="92" rx="12" fill="#b2f2bb" class="shape"/><text x="861" y="386" class="hand note">tool_result retained</text><text x="858" y="416" class="hand tiny">heavy bytes → tombstone</text>
+    <path d="M948 444 L948 472" class="line"/>
+    <rect x="831" y="483" width="234" height="62" rx="12" fill="#e5dbff" class="shape"/><text x="872" y="520" class="hand note">validate + re-parse</text>
+    <text x="817" y="579" class="hand note">original remains untouched</text>
+  </g>
+  <text x="196" y="672" class="hand note" font-weight="700">Smaller is useful. Smaller with an auditable proof is infrastructure.</text>
+</svg>
