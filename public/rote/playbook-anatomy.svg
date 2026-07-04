@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Anatomy of a Rote playbook</title>
+  <desc id="desc">A hand-drawn diagram showing a task signature and typed parameters feeding a step DAG of deterministic, slot, and judgment nodes, each protected by assertions and final verification.</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-6%" width="110%" height="112%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="83" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto" markerUnits="strokeWidth"><path d="M1 1.5 Q6 4.5 10 6.5 Q6 8.5 1 11" fill="none" stroke="#1e1e1e" stroke-width="1.5" stroke-linecap="round"/></marker>
+    <style>
+      .hand{font-family:"Comic Sans MS","Comic Relief","Segoe Print",cursive;fill:#1e1e1e}.title{font-size:39px;font-weight:700}.label{font-size:24px;font-weight:700}.note{font-size:18px}.tiny{font-size:16px}
+      .shape{stroke:#1e1e1e;stroke-width:3.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough)}.line{fill:none;stroke:#1e1e1e;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);filter:url(#rough)}.dash{stroke-dasharray:10 8}
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#fffdf7"/>
+  <text x="66" y="63" class="hand title">A playbook is executable memory, not a prompt</text>
+  <path d="M67 77 Q364 83 660 76" fill="none" stroke="#868e96" stroke-width="2.2" stroke-linecap="round" filter="url(#rough)"/>
+
+  <g>
+    <path d="M76 129 Q67 131 67 142 L66 245 Q67 257 79 258 L340 256 Q352 255 353 243 L351 141 Q350 130 339 129Z" fill="#e7f5ff" class="shape"/>
+    <text x="109" y="171" class="hand label">Task signature</text><text x="99" y="207" class="hand note">intent + environment fingerprint</text><text x="100" y="235" class="hand tiny">hard boundary for safe reuse</text>
+  </g>
+  <g>
+    <path d="M76 310 Q67 312 67 323 L66 426 Q67 438 79 439 L340 437 Q352 436 353 424 L351 322 Q350 311 339 310Z" fill="#f3f0ff" class="shape"/>
+    <text x="117" y="352" class="hand label">Typed parameters</text><text x="101" y="388" class="hand note">branch · date · form values</text><text x="101" y="416" class="hand tiny">bound once, rendered into steps</text>
+  </g>
+  <path d="M354 194 C390 212 409 240 437 276" class="line"/>
+  <path d="M354 371 C390 353 410 326 437 294" class="line"/>
+
+  <text x="501" y="132" class="hand label">Versioned step DAG</text>
+  <g>
+    <rect x="440" y="163" width="220" height="82" rx="16" fill="#b2f2bb" class="shape"/><text x="475" y="197" class="hand label">Deterministic</text><text x="480" y="226" class="hand tiny">tool + rendered args</text>
+    <path d="M550 247 L550 287" class="line"/>
+    <rect x="440" y="300" width="220" height="82" rx="16" fill="#ffec99" class="shape"/><text x="497" y="334" class="hand label">Slot</text><text x="468" y="363" class="hand tiny">bounded content fill</text>
+    <path d="M550 384 L550 424" class="line"/>
+    <rect x="440" y="437" width="220" height="82" rx="16" fill="#d0bfff" class="shape"/><text x="484" y="471" class="hand label">Judgment</text><text x="470" y="500" class="hand tiny">constrained option set</text>
+  </g>
+
+  <g>
+    <path d="M743 161 Q734 163 734 174 L733 508 Q734 520 746 521 L1103 519 Q1115 518 1116 506 L1114 173 Q1113 162 1102 161Z" fill="#fff9db" class="shape dash"/>
+    <text x="807" y="204" class="hand label">Safety envelope</text>
+    <rect x="783" y="241" width="280" height="73" rx="15" fill="#ffffff" class="shape"/><text x="830" y="273" class="hand label">expect</text><text x="815" y="299" class="hand tiny">postcondition after every step</text>
+    <rect x="783" y="347" width="280" height="73" rx="15" fill="#ffffff" class="shape"/><text x="817" y="379" class="hand label">on_fail</text><text x="827" y="405" class="hand tiny">retry · repair · fallback</text>
+    <rect x="783" y="453" width="280" height="73" rx="15" fill="#b2f2bb" class="shape"/><text x="836" y="485" class="hand label">verify</text><text x="813" y="511" class="hand tiny">final outcome must still be true</text>
+  </g>
+  <path d="M662 341 C693 330 710 317 731 298" class="line"/>
+
+  <g>
+    <path d="M206 594 Q197 596 197 607 L196 665 Q197 677 209 678 L991 676 Q1003 675 1004 663 L1002 606 Q1001 595 990 594Z" fill="#ebfbee" stroke="#2b8a3e" class="shape"/>
+    <text x="245" y="636" class="hand label">Success = every step passed + every final verification passed</text><text x="342" y="662" class="hand tiny">otherwise return the failed step and fall back safely</text>
+  </g>
+</svg>
