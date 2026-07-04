@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Glassbox context analysis pipeline</title>
+  <desc id="desc">A hand-drawn pipeline from a Claude Code transcript through parsing, context reconstruction, proof-based classification, an eviction plan, and a validated cleaned session.</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-6%" width="110%" height="112%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="41" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto" markerUnits="strokeWidth"><path d="M1 1.5 Q6 4.5 10 6.5 Q6 8.4 1.5 11" fill="none" stroke="#1e1e1e" stroke-width="1.5" stroke-linecap="round"/></marker>
+    <style>
+      .hand{font-family:"Comic Sans MS","Comic Relief","Segoe Print","Bradley Hand",cursive;fill:#1e1e1e}.title{font-size:40px;font-weight:700}.label{font-size:25px;font-weight:700}.note{font-size:18px}.tiny{font-size:16px}
+      .shape{stroke:#1e1e1e;stroke-width:3.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough)}.echo{fill:none;stroke:#1e1e1e;stroke-width:1.05;opacity:.42;stroke-linecap:round}.line{fill:none;stroke:#1e1e1e;stroke-width:3.1;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);filter:url(#rough)}.dash{stroke-dasharray:10 8}
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#fffdf7"/>
+  <text x="66" y="66" class="hand title">Glassbox opens the agent context window</text>
+  <path d="M67 80 Q365 86 662 79" fill="none" stroke="#868e96" stroke-width="2.2" stroke-linecap="round" filter="url(#rough)"/>
+
+  <g>
+    <path d="M70 141 Q62 142 62 152 L62 268 Q63 279 74 280 L249 278 Q260 277 261 266 L259 151 Q258 141 248 140Z" fill="#e7f5ff" class="shape"/>
+    <path d="M76 147 L244 145 Q253 147 254 155 L254 262 Q253 272 244 273 L76 274 Q68 272 68 263 L69 156 Q69 150 76 147Z" class="echo"/>
+    <text x="91" y="185" class="hand label">Transcript</text><text x="89" y="219" class="hand note">Claude Code JSONL</text><text x="90" y="248" class="hand tiny">messages · tools · usage</text>
+  </g>
+  <path d="M263 209 C284 201 298 201 317 208" class="line"/>
+  <g>
+    <path d="M329 141 Q321 142 321 152 L321 268 Q322 279 333 280 L508 278 Q519 277 520 266 L518 151 Q517 141 507 140Z" fill="#d0ebff" class="shape"/>
+    <text x="354" y="185" class="hand label">Reconstruct</text><text x="350" y="219" class="hand note">resident context</text><text x="350" y="248" class="hand tiny">neutral segment model</text>
+  </g>
+  <path d="M522 209 C543 201 557 201 576 208" class="line"/>
+  <g>
+    <path d="M588 141 Q580 142 580 152 L580 268 Q581 279 592 280 L767 278 Q778 277 779 266 L777 151 Q776 141 766 140Z" fill="#ffec99" class="shape"/>
+    <text x="619" y="185" class="hand label">Prove</text><text x="608" y="219" class="hand note">dead or redundant</text><text x="609" y="248" class="hand tiny">filesystem + transcript</text>
+  </g>
+  <path d="M781 209 C802 201 816 201 835 208" class="line"/>
+  <g>
+    <path d="M847 141 Q839 142 839 152 L839 268 Q840 279 851 280 L1026 278 Q1037 277 1038 266 L1036 151 Q1035 141 1025 140Z" fill="#b2f2bb" class="shape"/>
+    <text x="873" y="185" class="hand label">Plan</text><text x="869" y="219" class="hand note">safe tombstones</text><text x="869" y="248" class="hand tiny">dry-run by default</text>
+  </g>
+
+  <text x="115" y="348" class="hand label">Proof-based classes</text>
+  <g>
+    <path d="M92 376 Q84 377 84 387 L84 458 Q85 469 96 470 L282 468 Q293 467 294 456 L292 386 Q291 376 281 375Z" fill="#ffc9c9" class="shape dash"/>
+    <text x="145" y="414" class="hand label">gone</text><text x="112" y="444" class="hand tiny">file was deleted</text>
+    <path d="M321 376 Q313 377 313 387 L313 458 Q314 469 325 470 L511 468 Q522 467 523 456 L521 386 Q520 376 510 375Z" fill="#ffd8a8" class="shape dash"/>
+    <text x="358" y="414" class="hand label">stale-drift</text><text x="342" y="444" class="hand tiny">file changed on disk</text>
+    <path d="M550 376 Q542 377 542 387 L542 458 Q543 469 554 470 L740 468 Q751 467 752 456 L750 386 Q749 376 739 375Z" fill="#ffe8cc" class="shape dash"/>
+    <text x="566" y="414" class="hand label">superseded</text><text x="568" y="444" class="hand tiny">a later read replaced it</text>
+    <path d="M779 376 Q771 377 771 387 L771 458 Q772 469 783 470 L969 468 Q980 467 981 456 L979 386 Q978 376 968 375Z" fill="#e5dbff" class="shape dash"/>
+    <text x="821" y="414" class="hand label">duplicate</text><text x="818" y="444" class="hand tiny">same bytes, same hash</text>
+  </g>
+
+  <path d="M944 281 C982 327 1003 392 1003 479" class="line"/>
+  <g>
+    <path d="M748 526 Q738 528 738 539 L737 628 Q738 640 751 641 L1095 639 Q1108 638 1109 626 L1107 538 Q1106 527 1094 526Z" fill="#b2f2bb" stroke="#2b8a3e" class="shape"/>
+    <text x="784" y="570" class="hand label">Validated sibling session</text><text x="783" y="604" class="hand note">original untouched · structure intact · ready to resume</text>
+  </g>
+  <g>
+    <path d="M89 526 Q79 528 79 539 L78 628 Q79 640 92 641 L603 639 Q616 638 617 626 L615 538 Q614 527 602 526Z" fill="#f1f3f5" class="shape"/>
+    <text x="111" y="568" class="hand label">Inspect first</text><text x="278" y="568" class="hand note">x-ray → cost → cleanup preview</text><text x="111" y="604" class="hand note">Nothing is written until the user requests <tspan font-weight="700">--fork</tspan>.</text>
+  </g>
+  <path d="M619 584 C661 576 690 576 733 583" class="line"/>
+</svg>

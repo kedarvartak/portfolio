@@ -4,7 +4,7 @@ The source for [kedarvartak.com](https://www.kedarvartak.com): my personal portf
 
 ## What is here
 
-- **Agents** — projects built for real software workflows, including [Easy Sanity](https://github.com/kedarvartak/easy-sanity), [Agent Vision](https://github.com/kedarvartak/agent-vision), and [Multi Agent Memo](https://github.com/kedarvartak/multi-agent-memo).
+- **Agents** — projects built for real software workflows, including [Glassbox](https://github.com/kedarvartak/glassbox), [Easy Sanity](https://github.com/kedarvartak/easy-sanity), [Agent Vision](https://github.com/kedarvartak/agent-vision), and [Multi Agent Memo](https://github.com/kedarvartak/multi-agent-memo).
 - **Writeups** — technical notes on agent harnesses, context and memory, prompting, graph workflows, and production engineering.
 - **Project documentation** — an in-depth guide to Easy Sanity and its browser-based regression testing workflow.
 - **Experiments** — smaller ideas and observations that do not need a full technical article.
