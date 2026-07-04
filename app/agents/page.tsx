@@ -39,9 +39,9 @@ export default function AgentsPage() {
               This page is where I collect the agents I&apos;ve built. I care less about flashy demos and more about systems that reduce toil, catch regressions, and help engineers move faster with confidence.
             </p>
             <p className="home-paragraph">
-              The current lineup spans agent-context observability, regression testing, browser vision, and shared
-              memory—including <strong>Glassbox</strong>, which makes the contents and cost of a coding agent&apos;s
-              context inspectable.
+              The current lineup spans trajectory reuse, agent-context observability, regression testing, browser
+              vision, and shared memory—including <strong>Rote</strong>, which turns successful agent runs into
+              deterministic, assertion-gated procedures.
             </p>
           </div>
         </aside>
@@ -51,6 +51,37 @@ export default function AgentsPage() {
             <h2 className="home-section-title">Featured agents</h2>
             
             <div className="agents-grid">
+              <article className="agent-card">
+                <div className="agent-card-top">
+                  <span className="agent-pill">Trajectory Memoization</span>
+                </div>
+
+                <div>
+                  <h3 className="agent-title">Rote</h3>
+                  <p className="agent-description">
+                    Harness middleware that records how an agent completes a task, represents the reusable procedure
+                    as a parameterized step DAG, and replays it with deterministic control flow, per-step assertions,
+                    and a safe fallback path.
+                  </p>
+                </div>
+
+                <div className="agent-meta-row">
+                  <span className="agent-meta-item">Record → replay</span>
+                  <span className="agent-meta-item">Assertion-gated steps</span>
+                  <span className="agent-meta-item">MCP tool boundary</span>
+                </div>
+
+                <div>
+                  <Link href="/writeups/rote-trajectory-memoization" className="inline-link">
+                    Read the technical writeup →
+                  </Link>
+                  {' · '}
+                  <a href="https://github.com/kedarvartak/rote" target="_blank" rel="noopener noreferrer" className="inline-link">
+                    View on GitHub →
+                  </a>
+                </div>
+              </article>
+
               <article className="agent-card">
                 <div className="agent-card-top">
                   <span className="agent-pill">Agent Context Inspector</span>
