@@ -1,52 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
-  <rect width="1200" height="720" fill="#fffaf0"/>
-  <style>
-    .box{fill:#ffffff;stroke:#1f2937;stroke-width:4;rx:22;filter:url(#shadow)}
-    .dash{fill:#f8fafc;stroke:#64748b;stroke-width:3;stroke-dasharray:10 10;rx:20}
-    .txt{font-family:"Comic Sans MS","Virgil",cursive;font-size:32px;fill:#111827}
-    .small{font-size:22px;fill:#374151}
-    .arrow{stroke:#111827;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
-    .accent{fill:#dbeafe;stroke:#2563eb;stroke-width:4;rx:18}
-  </style>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Pi harness: tiny core, huge surface area</title>
+  <desc id="desc">A hand-drawn loop showing intent flowing through Pi into verified code, with extensions, skills, and packages feeding the harness.</desc>
   <defs>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="6" dy="8" stdDeviation="0" flood-color="#111827" flood-opacity="0.14"/></filter>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10" fill="none" stroke="#111827" stroke-width="2"/></marker>
+    <filter id="rough" x="-4%" y="-4%" width="108%" height="108%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.045" numOctaves="2" seed="17" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M1 1.5 Q6 4.5 10 6.5 Q6 8.2 1.5 11" fill="none" stroke="#1e1e1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .hand{font-family:"Comic Sans MS","Segoe Print","Bradley Hand",cursive;fill:#1e1e1e}
+      .title{font-size:40px;font-weight:700}.label{font-size:30px;font-weight:700}.note{font-size:21px}
+      .shape{stroke:#1e1e1e;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough)}
+      .echo{fill:none;stroke:#1e1e1e;stroke-width:1.15;opacity:.42;stroke-linecap:round;stroke-linejoin:round}
+      .line{fill:none;stroke:#1e1e1e;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);filter:url(#rough)}
+      .dash{stroke-dasharray:11 9}
+    </style>
   </defs>
 
-  <text x="70" y="70" class="txt" font-size="40">Pi harness: tiny core, huge surface area</text>
-  <rect x="80" y="135" width="235" height="115" class="box"/>
-  <text x="127" y="182" class="txt">Intent</text>
-  <text x="112" y="216" class="txt small">plain-language task</text>
+  <rect width="1200" height="720" fill="#fffdf7"/>
+  <text x="70" y="70" class="hand title">Pi harness: tiny core, huge surface area</text>
+  <path d="M70 83 Q345 88 620 82" fill="none" stroke="#868e96" stroke-width="2.2" stroke-linecap="round" filter="url(#rough)"/>
 
-  <path d="M315 193 C380 160, 410 160, 475 193" class="arrow"/>
+  <g>
+    <path d="M91 139 Q91 132 101 132 L302 134 Q313 134 315 145 L313 239 Q312 250 301 251 L94 249 Q82 248 82 238 L83 149 Q83 141 91 139Z" fill="#ffffff" class="shape"/>
+    <path d="M94 136 L302 137 Q309 137 311 146 L309 237 Q309 246 299 247 L94 245 Q87 245 87 237 L88 148 Q88 140 94 136Z" class="echo"/>
+    <text x="129" y="181" class="hand label">Intent</text>
+    <text x="111" y="218" class="hand note">plain-language task</text>
+  </g>
 
-  <rect x="475" y="120" width="255" height="145" class="accent"/>
-  <text x="535" y="171" class="txt">Pi</text>
-  <text x="515" y="205" class="txt small">read · edit · bash · write</text>
-  <text x="515" y="235" class="txt small">sessions · context · models</text>
+  <path d="M316 191 C371 163 414 161 468 190" class="line"/>
+  <path d="M318 195 C373 169 414 166 466 194" class="echo"/>
 
-  <path d="M730 193 C805 160, 835 160, 910 193" class="arrow"/>
+  <g>
+    <path d="M490 121 Q482 122 480 133 L478 248 Q479 260 491 262 L717 260 Q730 259 731 247 L729 133 Q728 121 716 120Z" fill="#a5d8ff" class="shape"/>
+    <path d="M493 125 L714 124 Q725 125 726 135 L725 245 Q725 255 714 256 L493 257 Q484 255 484 246 L485 136 Q485 128 493 125Z" class="echo"/>
+    <text x="567" y="170" class="hand label">Pi</text>
+    <text x="516" y="207" class="hand note">read · edit · bash · write</text>
+    <text x="516" y="237" class="hand note">sessions · context · models</text>
+  </g>
 
-  <rect x="910" y="135" width="220" height="115" class="box"/>
-  <text x="968" y="182" class="txt">Code</text>
-  <text x="950" y="216" class="txt small">verified diff</text>
+  <path d="M732 191 C790 163 837 164 901 191" class="line"/>
+  <path d="M734 196 C791 170 837 169 899 195" class="echo"/>
 
-  <rect x="110" y="395" width="260" height="140" class="dash"/>
-  <text x="148" y="444" class="txt">Extensions</text>
-  <text x="145" y="480" class="txt small">tools, commands, UI</text>
+  <g>
+    <path d="M924 138 Q916 139 914 149 L913 239 Q914 249 925 250 L1117 248 Q1128 247 1129 237 L1127 148 Q1126 139 1117 137Z" fill="#ffffff" class="shape"/>
+    <path d="M926 142 L1114 141 Q1123 142 1124 150 L1124 234 Q1123 243 1115 244 L927 245 Q918 243 918 235 L919 151 Q919 144 926 142Z" class="echo"/>
+    <text x="974" y="181" class="hand label">Code</text>
+    <text x="955" y="218" class="hand note">verified diff</text>
+  </g>
 
-  <rect x="470" y="395" width="260" height="140" class="dash"/>
-  <text x="523" y="444" class="txt">Skills</text>
-  <text x="508" y="480" class="txt small">repeatable know-how</text>
+  <g>
+    <path d="M124 399 Q116 401 116 412 L115 522 Q116 534 128 535 L356 533 Q368 532 369 521 L367 410 Q366 399 354 398Z" fill="#e7f5ff" class="shape dash"/>
+    <text x="150" y="446" class="hand label">Extensions</text><text x="144" y="484" class="hand note">tools, commands, UI</text>
+  </g>
+  <g>
+    <path d="M484 399 Q476 401 476 412 L475 522 Q476 534 488 535 L716 533 Q728 532 729 521 L727 410 Q726 399 714 398Z" fill="#ebfbee" class="shape dash"/>
+    <text x="530" y="446" class="hand label">Skills</text><text x="507" y="484" class="hand note">repeatable know-how</text>
+  </g>
+  <g>
+    <path d="M844 399 Q836 401 836 412 L835 522 Q836 534 848 535 L1076 533 Q1088 532 1089 521 L1087 410 Q1086 399 1074 398Z" fill="#fff3bf" class="shape dash"/>
+    <text x="872" y="446" class="hand label">Packages</text><text x="873" y="484" class="hand note">shareable workflow</text>
+  </g>
 
-  <rect x="830" y="395" width="260" height="140" class="dash"/>
-  <text x="867" y="444" class="txt">Packages</text>
-  <text x="875" y="480" class="txt small">shareable workflow</text>
+  <path d="M240 398 C275 331 401 303 534 265" class="line"/>
+  <path d="M601 397 C605 348 605 307 605 266" class="line"/>
+  <path d="M960 398 C910 334 792 301 674 264" class="line"/>
 
-  <path d="M240 395 C280 320, 450 290, 545 264" class="arrow"/>
-  <path d="M600 395 C605 340, 605 310, 605 265" class="arrow"/>
-  <path d="M960 395 C900 325, 760 290, 660 265" class="arrow"/>
-
-  <path d="M1000 250 C980 620, 240 620, 195 250" class="arrow"/>
-  <text x="430" y="650" class="txt small">observe → branch → compact → continue without losing the trail</text>
+  <path d="M1020 252 C1000 615 252 622 193 253" class="line"/>
+  <path d="M1013 256 C986 598 270 606 201 257" class="echo"/>
+  <text x="391" y="657" class="hand note">observe → branch → compact → continue without losing the trail</text>
 </svg>
