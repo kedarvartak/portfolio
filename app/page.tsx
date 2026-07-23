@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import { ThemeToggle } from './components/theme-toggle'
 import { HoverChip } from './components/hover-chip'
+import { AsciiScene } from './components/ascii-scene'
+import { AnimatedTitle } from './components/animated-title'
+import { Reveal } from './components/reveal'
 
 const highlights = [
   {
@@ -100,16 +103,21 @@ export default function Home() {
           </header>
 
           <div className="home-intro-sidebar">
-            <img src="/img.jpeg" alt="Kedar Vartak" className="home-profile-img" />
-            <h1 className="home-title">Kedar Vartak</h1>
-            <p className="home-lead">
-              I build software with a bias toward practical systems, clean execution, and tools that compound over time.
-            </p>
+            <Reveal>
+              <AsciiScene size={180} />
+            </Reveal>
+            <AnimatedTitle text="Kedar Vartak" className="home-title" delay={0.15} />
+            <Reveal delay={0.5}>
+              <p className="home-lead">
+                I build software with a bias toward practical systems, clean execution, and tools that compound over
+                time.
+              </p>
+            </Reveal>
           </div>
         </aside>
 
         <section className="split-main">
-          <div className="home-intro">
+          <Reveal delay={0.25} className="home-intro">
             <p className="home-paragraph">
               I work at{' '}
               <a href="https://www.loopr.ai" target="_blank" rel="noopener noreferrer" className="inline-link">
@@ -126,21 +134,23 @@ export default function Home() {
               I care the most about AI infrastructure, memory and tooling. I prefer to call myself a generalist and not
               specialist. I bench 210lbs, workout 365 days a year.
             </p>
-          </div>
+          </Reveal>
 
           <div className="home-section">
-            <h2 className="home-section-title">Highlights</h2>
+            <Reveal delay={0.35}>
+              <h2 className="home-section-title">Highlights</h2>
+            </Reveal>
             <ul className="home-highlights-list">
-              {highlights.map((item) => (
-                <li key={item.label} className="home-highlight-item">
+              {highlights.map((item, i) => (
+                <Reveal key={item.label} as="li" delay={0.45 + i * 0.08} className="home-highlight-item">
                   <span className="home-highlight-label">{item.label}</span>
                   <div className="home-highlight-content">{item.content}</div>
-                </li>
+                </Reveal>
               ))}
             </ul>
           </div>
 
-          <footer className="home-footer">
+          <Reveal as="footer" delay={0.8} className="home-footer">
             <div className="home-footer-links">
               <a href="mailto:kedarvartak01@gmail.com" className="inline-link">
                 email
@@ -155,7 +165,7 @@ export default function Home() {
                 twitter
               </a>
             </div>
-          </footer>
+          </Reveal>
         </section>
       </div>
     </main>
