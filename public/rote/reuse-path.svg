@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">The read, write, and reuse paths of an agent harness</title>
+  <desc id="desc">A hand-drawn comparison showing compression on the read path, semantic memory on the write path, and Rote replaying learned procedures on the reuse path.</desc>
+  <defs>
+    <filter id="rough" x="-5%" y="-6%" width="110%" height="112%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="71" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto" markerUnits="strokeWidth"><path d="M1 1.5 Q6 4.5 10 6.5 Q6 8.5 1 11" fill="none" stroke="#1e1e1e" stroke-width="1.5" stroke-linecap="round"/></marker>
+    <style>
+      .hand{font-family:"Comic Sans MS","Comic Relief","Segoe Print",cursive;fill:#1e1e1e}.title{font-size:38px;font-weight:700}.label{font-size:27px;font-weight:700}.note{font-size:18px}.tiny{font-size:16px}
+      .shape{stroke:#1e1e1e;stroke-width:3.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#rough)}.echo{fill:none;stroke:#1e1e1e;stroke-width:1.05;opacity:.4;stroke-linecap:round}.line{fill:none;stroke:#1e1e1e;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow);filter:url(#rough)}
+    </style>
+  </defs>
+  <rect width="1200" height="700" fill="#fffdf7"/>
+  <text x="65" y="62" class="hand title">Agent efficiency has three different paths</text>
+  <path d="M66 76 Q342 82 618 75" fill="none" stroke="#868e96" stroke-width="2.2" stroke-linecap="round" filter="url(#rough)"/>
+
+  <g>
+    <path d="M72 132 Q61 134 61 146 L60 512 Q61 526 75 527 L352 525 Q366 524 367 510 L365 145 Q364 133 351 132Z" fill="#e7f5ff" class="shape"/>
+    <text x="150" y="180" class="hand label">Read path</text><text x="118" y="212" class="hand note">compression</text>
+    <rect x="111" y="264" width="203" height="64" rx="13" fill="#ffffff" class="shape"/><text x="144" y="302" class="hand note">large tool output</text>
+    <path d="M212 330 L212 370" class="line"/>
+    <rect x="128" y="382" width="169" height="64" rx="13" fill="#a5d8ff" class="shape"/><text x="158" y="420" class="hand note">fewer tokens</text>
+    <text x="104" y="480" class="hand tiny">the step still ran</text><text x="104" y="504" class="hand tiny">the model still plans</text>
+  </g>
+  <g>
+    <path d="M426 132 Q415 134 415 146 L414 512 Q415 526 429 527 L706 525 Q720 524 721 510 L719 145 Q718 133 705 132Z" fill="#f3f0ff" class="shape"/>
+    <text x="501" y="180" class="hand label">Write path</text><text x="472" y="212" class="hand note">semantic memory</text>
+    <rect x="464" y="264" width="207" height="64" rx="13" fill="#ffffff" class="shape"/><text x="505" y="302" class="hand note">successful run</text>
+    <path d="M568 330 L568 370" class="line"/>
+    <rect x="483" y="382" width="169" height="64" rx="13" fill="#d0bfff" class="shape"/><text x="522" y="420" class="hand note">stored facts</text>
+    <text x="457" y="480" class="hand tiny">knowledge returns</text><text x="457" y="504" class="hand tiny">procedure is re-planned</text>
+  </g>
+  <g>
+    <path d="M780 132 Q769 134 769 146 L768 512 Q769 526 783 527 L1122 525 Q1136 524 1137 510 L1135 145 Q1134 133 1121 132Z" fill="#ebfbee" stroke="#2b8a3e" class="shape"/>
+    <text x="862" y="180" class="hand label">Reuse path</text><text x="884" y="212" class="hand note">Rote</text>
+    <rect x="821" y="252" width="263" height="64" rx="13" fill="#ffffff" class="shape"/><text x="852" y="290" class="hand note">successful trajectory</text>
+    <path d="M952 318 L952 356" class="line"/>
+    <rect x="821" y="369" width="263" height="76" rx="13" fill="#b2f2bb" class="shape"/><text x="856" y="402" class="hand note">assertion-gated</text><text x="875" y="430" class="hand note">step DAG</text>
+    <text x="816" y="480" class="hand tiny">skip exploration</text><text x="816" y="504" class="hand tiny">verify the replayed outcome</text>
+  </g>
+
+  <path d="M132 591 Q405 585 679 592" fill="none" stroke="#e67700" stroke-width="3.2" stroke-linecap="round" filter="url(#rough)"/>
+  <text x="132" y="633" class="hand label">Make tokens smaller</text>
+  <text x="740" y="633" class="hand label" fill="#2b8a3e">Make repeated work disappear</text>
+</svg>

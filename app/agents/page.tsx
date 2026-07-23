@@ -45,7 +45,9 @@ export default function AgentsPage() {
               This page is where I collect the agents I&apos;ve built. I care less about flashy demos and more about systems that reduce toil, catch regressions, and help engineers move faster with confidence.
             </p>
             <p className="home-paragraph">
-              The current lineup starts with <strong>Easy Sanity</strong>, our regression testing agent designed to sanity-check product flows before humans have to chase the same bugs twice.
+              The current lineup spans trajectory reuse, agent-context observability, regression testing, browser
+              vision, and shared memory—including <strong>Rote</strong>, which turns successful agent runs into
+              deterministic, assertion-gated procedures.
             </p>
           </Reveal>
         </aside>
@@ -53,11 +55,73 @@ export default function AgentsPage() {
         <section className="split-main">
           <div className="home-section">
             <Reveal delay={0.2}>
-              <h2 className="home-section-title">Featured agent</h2>
+              <h2 className="home-section-title">Featured agents</h2>
             </Reveal>
 
             <div className="agents-grid">
               <Reveal as="article" delay={0.3} className="agent-card">
+                <div className="agent-card-top">
+                  <span className="agent-pill">Trajectory Memoization</span>
+                </div>
+
+                <div>
+                  <h3 className="agent-title">Rote</h3>
+                  <p className="agent-description">
+                    Harness middleware that records how an agent completes a task, represents the reusable procedure
+                    as a parameterized step DAG, and replays it with deterministic control flow, per-step assertions,
+                    and a safe fallback path.
+                  </p>
+                </div>
+
+                <div className="agent-meta-row">
+                  <span className="agent-meta-item">Record → replay</span>
+                  <span className="agent-meta-item">Assertion-gated steps</span>
+                  <span className="agent-meta-item">MCP tool boundary</span>
+                </div>
+
+                <div>
+                  <Link href="/writeups/rote-trajectory-memoization" className="inline-link">
+                    Read the technical writeup →
+                  </Link>
+                  {' · '}
+                  <a href="https://github.com/kedarvartak/rote" target="_blank" rel="noopener noreferrer" className="inline-link">
+                    View on GitHub →
+                  </a>
+                </div>
+              </Reveal>
+
+              <Reveal as="article" delay={0.4} className="agent-card">
+                <div className="agent-card-top">
+                  <span className="agent-pill">Agent Context Inspector</span>
+                </div>
+
+                <div>
+                  <h3 className="agent-title">Glassbox</h3>
+                  <p className="agent-description">
+                    A local-first inspector for the context coding agents actually carry. Glassbox exposes stale,
+                    duplicated, and deleted-file content, then creates a validated, losslessly cleaned session you can
+                    resume without modifying the original.
+                  </p>
+                </div>
+
+                <div className="agent-meta-row">
+                  <span className="agent-meta-item">Context x-ray</span>
+                  <span className="agent-meta-item">Lossless session fork</span>
+                  <span className="agent-meta-item">Local-first and read-only</span>
+                </div>
+
+                <div>
+                  <Link href="/writeups/glassbox-agent-context" className="inline-link">
+                    Read the technical writeup →
+                  </Link>
+                  {' · '}
+                  <a href="https://github.com/kedarvartak/glassbox" target="_blank" rel="noopener noreferrer" className="inline-link">
+                    View on GitHub →
+                  </a>
+                </div>
+              </Reveal>
+
+              <Reveal as="article" delay={0.5} className="agent-card">
                 <div className="agent-card-top">
                   <span className="agent-pill">Regression Testing Agent</span>
                 </div>
@@ -82,7 +146,7 @@ export default function AgentsPage() {
                 </div>
               </Reveal>
 
-              <Reveal as="article" delay={0.4} className="agent-card">
+              <Reveal as="article" delay={0.6} className="agent-card">
                 <div className="agent-card-top">
                   <span className="agent-pill">Shared Memory MCP Server</span>
                 </div>
@@ -107,7 +171,7 @@ export default function AgentsPage() {
                 </div>
               </Reveal>
 
-              <Reveal as="article" delay={0.5} className="agent-card">
+              <Reveal as="article" delay={0.7} className="agent-card">
                 <div className="agent-card-top">
                   <span className="agent-pill">Browser-First MCP Server</span>
                 </div>

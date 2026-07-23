@@ -22,9 +22,31 @@ const highlights = [
     content: 'AI systems that make my everyday work easier and faster.',
   },
   {
-    label: 'Build',
+    label: 'BUILDS',
     content: (
       <>
+        <HoverChip text="memoize successful agent trajectories and replay them as assertion-gated procedures">
+          <a
+            href="https://github.com/kedarvartak/rote"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-link"
+          >
+            Rote
+          </a>
+        </HoverChip>
+        ,{' '}
+        <HoverChip text="inspect and losslessly clean the context carried by coding agents">
+          <a
+            href="https://github.com/kedarvartak/glassbox"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-link"
+          >
+            Glassbox
+          </a>
+        </HoverChip>
+        ,{' '}
         <HoverChip text="re-usable qa testing agent for browser-based apps">
           <a
             href="https://github.com/kedarvartak/easy-sanity"
@@ -32,29 +54,7 @@ const highlights = [
             rel="noopener noreferrer"
             className="inline-link"
           >
-            Easy Sanity
-          </a>
-        </HoverChip>
-        ,{' '}
-        <HoverChip text="connect your ide to browser via cdp — eyes for your llms">
-          <a
-            href="https://github.com/kedarvartak/agent-vision"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-link"
-          >
-            Agent Vision
-          </a>
-        </HoverChip>
-        ,{' '}
-        <HoverChip text="shared repo-memory to sync context across all your coding agents">
-          <a
-            href="https://github.com/kedarvartak/multi-agent-memo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-link"
-          >
-            Multi Agent Memo
+            Easy Sanity (browser agent)
           </a>
         </HoverChip>
         .
