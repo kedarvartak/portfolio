@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ThemeToggle } from '../../components/theme-toggle'
-import { Reveal } from '../../components/reveal'
 import { MarkdownRenderer } from '../../components/markdown-renderer'
 import { getWriteupBySlug, getWriteups } from '../../lib/writeups'
 
@@ -66,17 +65,17 @@ export default async function WriteupDetailPage({
             <ThemeToggle />
           </header>
 
-          <Reveal className="home-intro-sidebar">
+          <div className="home-intro-sidebar">
             <span className="writeup-date">{writeup.date}</span>
             <h1 className="home-title">{writeup.title}</h1>
             <p className="home-lead">{writeup.excerpt}</p>
-          </Reveal>
+          </div>
         </aside>
 
         <section className="split-main">
-          <Reveal as="article" delay={0.15} className="writeup-detail">
+          <article className="writeup-detail">
             <MarkdownRenderer content={writeup.content} omitFirstH1 />
-          </Reveal>
+          </article>
 
           <footer className="home-footer">
             <div className="home-footer-links">
