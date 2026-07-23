@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import { ThemeToggle } from '../components/theme-toggle'
-import { AnimatedTitle } from '../components/animated-title'
-import { Reveal } from '../components/reveal'
 
 export const metadata = {
   title: 'Shitposts - Kedar Vartak',
@@ -91,21 +89,19 @@ export default function ShitpostsPage() {
           </header>
 
           <div className="home-intro-sidebar">
-            <AnimatedTitle text="Shitposts" className="home-title" />
-            <Reveal delay={0.35}>
-              <p className="home-lead">Short-form notes on software ownership, leverage, and shipping useful things.</p>
-            </Reveal>
+            <h1 className="home-title">Shitposts</h1>
+            <p className="home-lead">Short-form notes on software ownership, leverage, and shipping useful things.</p>
           </div>
         </aside>
 
         <section className="split-main">
           <div className="writeups-list">
-            {shitposts.map((item, i) => (
-              <Reveal key={item.id} as="article" delay={0.2 + i * 0.1} className="writeup-item">
+            {shitposts.map((item) => (
+              <article key={item.id} className="writeup-item">
                 <span className="writeup-date">{item.date}</span>
                 <h2 className="writeup-title">{item.title}</h2>
                 <div className="writeup-content">{item.content}</div>
-              </Reveal>
+              </article>
             ))}
           </div>
         </section>
