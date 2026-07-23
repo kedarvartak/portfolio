@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { ThemeToggle } from '../components/theme-toggle'
+import { AnimatedTitle } from '../components/animated-title'
+import { Reveal } from '../components/reveal'
 
 export const metadata = {
   title: "Kedar's Agents - Kedar Vartak",
@@ -27,29 +29,35 @@ export default function AgentsPage() {
           </header>
 
           <div className="home-intro-sidebar">
-            <img src="/img.jpeg" alt="Kedar Vartak" className="home-profile-img" />
-            <h1 className="home-title">Kedar&apos;s Agents</h1>
-            <p className="home-lead">
-              Systems, tooling, and experiments built for real software teams and messy production workflows.
-            </p>
+            <Reveal>
+              <img src="/img.jpeg" alt="Kedar Vartak" className="home-profile-img" />
+            </Reveal>
+            <AnimatedTitle text="Kedar's Agents" className="home-title" delay={0.15} />
+            <Reveal delay={0.45}>
+              <p className="home-lead">
+                Systems, tooling, and experiments built for real software teams and messy production workflows.
+              </p>
+            </Reveal>
           </div>
 
-          <div className="home-intro">
+          <Reveal delay={0.55} className="home-intro">
             <p className="home-paragraph">
               This page is where I collect the agents I&apos;ve built. I care less about flashy demos and more about systems that reduce toil, catch regressions, and help engineers move faster with confidence.
             </p>
             <p className="home-paragraph">
               The current lineup starts with <strong>Easy Sanity</strong>, our regression testing agent designed to sanity-check product flows before humans have to chase the same bugs twice.
             </p>
-          </div>
+          </Reveal>
         </aside>
 
         <section className="split-main">
           <div className="home-section">
-            <h2 className="home-section-title">Featured agent</h2>
-            
+            <Reveal delay={0.2}>
+              <h2 className="home-section-title">Featured agent</h2>
+            </Reveal>
+
             <div className="agents-grid">
-              <article className="agent-card">
+              <Reveal as="article" delay={0.3} className="agent-card">
                 <div className="agent-card-top">
                   <span className="agent-pill">Regression Testing Agent</span>
                 </div>
@@ -72,9 +80,9 @@ export default function AgentsPage() {
                     Read documentation →
                   </Link>
                 </div>
-              </article>
+              </Reveal>
 
-              <article className="agent-card">
+              <Reveal as="article" delay={0.4} className="agent-card">
                 <div className="agent-card-top">
                   <span className="agent-pill">Shared Memory MCP Server</span>
                 </div>
@@ -97,9 +105,9 @@ export default function AgentsPage() {
                     View on GitHub →
                   </a>
                 </div>
-              </article>
+              </Reveal>
 
-              <article className="agent-card">
+              <Reveal as="article" delay={0.5} className="agent-card">
                 <div className="agent-card-top">
                   <span className="agent-pill">Browser-First MCP Server</span>
                 </div>
@@ -122,7 +130,7 @@ export default function AgentsPage() {
                     View on GitHub →
                   </a>
                 </div>
-              </article>
+              </Reveal>
             </div>
           </div>
 

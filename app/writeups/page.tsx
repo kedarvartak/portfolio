@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { ThemeToggle } from '../components/theme-toggle'
+import { AnimatedTitle } from '../components/animated-title'
+import { Reveal } from '../components/reveal'
 import { getWriteups } from '../lib/writeups'
 
 export const metadata = {
@@ -33,17 +35,19 @@ export default async function WriteupsPage() {
           </header>
 
           <div className="home-intro-sidebar">
-            <h1 className="home-title">Writeups</h1>
-            <p className="home-lead">
-              Long-form posts on agent memory, systems design, and the software patterns worth caring about.
-            </p>
+            <AnimatedTitle text="Writeups" className="home-title" />
+            <Reveal delay={0.35}>
+              <p className="home-lead">
+                Long-form posts on agent memory, systems design, and the software patterns worth caring about.
+              </p>
+            </Reveal>
           </div>
         </aside>
 
         <section className="split-main">
           <div className="writeups-list">
-            {writeups.map((item) => (
-              <article key={item.slug} className="writeup-item">
+            {writeups.map((item, i) => (
+              <Reveal key={item.slug} as="article" delay={0.2 + i * 0.1} className="writeup-item">
                 <span className="writeup-date">{item.date}</span>
                 <h2 className="writeup-title">
                   <Link href={`/writeups/${item.slug}`} className="writeup-link">
@@ -51,7 +55,7 @@ export default async function WriteupsPage() {
                   </Link>
                 </h2>
                 <p className="writeup-content">{item.excerpt}</p>
-              </article>
+              </Reveal>
             ))}
           </div>
         </section>
