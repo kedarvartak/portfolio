@@ -1,28 +1,29 @@
 import Link from 'next/link'
 import { ThemeToggle } from './components/theme-toggle'
 import { HoverChip } from './components/hover-chip'
+import { FitToScreen } from './components/fit-to-screen'
 
 const highlights = [
   {
     label: 'Current',
     content: (
       <>
-        Software Engineer at{' '}
-        <a href="https://www.loopr.ai" target="_blank" rel="noopener noreferrer" className="inline-link">
-          Loopr.ai
+        Founding Engineer at{' '}
+        <a href="https://getdrive.ai" target="_blank" rel="noopener noreferrer" className="inline-link">
+          Drive AI
         </a>
       </>
     ),
   },
   {
     label: 'Focus',
-    content: 'AI systems that make my everyday work easier and faster.',
+    content: 'Applied AI systems that make engineering work faster and more reliable.',
   },
   {
-    label: 'BUILDS',
+    label: 'Projects',
     content: (
       <>
-        <HoverChip text="memoize successful agent trajectories and replay them as assertion-gated procedures">
+        <HoverChip text="Records successful agent runs and replays them as verified, repeatable procedures">
           <a
             href="https://github.com/kedarvartak/rote"
             target="_blank"
@@ -33,7 +34,7 @@ const highlights = [
           </a>
         </HoverChip>
         ,{' '}
-        <HoverChip text="inspect and losslessly clean the context carried by coding agents">
+        <HoverChip text="Inspects and safely cleans up the context that coding agents carry">
           <a
             href="https://github.com/kedarvartak/glassbox"
             target="_blank"
@@ -44,14 +45,14 @@ const highlights = [
           </a>
         </HoverChip>
         ,{' '}
-        <HoverChip text="re-usable qa testing agent for browser-based apps">
+        <HoverChip text="A reusable QA agent for testing browser-based applications">
           <a
             href="https://github.com/kedarvartak/easy-sanity"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-link"
           >
-            Easy Sanity (browser agent)
+            Easy Sanity
           </a>
         </HoverChip>
         .
@@ -71,14 +72,15 @@ const highlights = [
     ),
   },
   {
-    label: 'Philosophy',
-    content: 'Aura FARM',
+    label: 'Approach',
+    content: 'End-to-end ownership, from design through testing.',
   },
 ]
 
 export default function Home() {
   return (
     <main className="split-shell">
+      <FitToScreen />
       <div className="split-container">
         <aside className="split-sidebar">
           <header className="home-nav" aria-label="Primary">
@@ -92,9 +94,6 @@ export default function Home() {
               <Link href="/writeups" className="home-nav-link">
                 writeups
               </Link>
-              <Link href="/shitposts" className="home-nav-link">
-                shitposts
-              </Link>
             </div>
             <ThemeToggle />
           </header>
@@ -103,7 +102,7 @@ export default function Home() {
             <img src="/img.jpeg" alt="Kedar Vartak" className="home-profile-img" />
             <h1 className="home-title">Kedar Vartak</h1>
             <p className="home-lead">
-              I build software with a bias toward practical systems, clean execution, and tools that compound over time.
+              I build practical, well-engineered software and tools whose value compounds over time.
             </p>
           </div>
         </aside>
@@ -111,20 +110,21 @@ export default function Home() {
         <section className="split-main">
           <div className="home-intro">
             <p className="home-paragraph">
-              I work at{' '}
-              <a href="https://www.loopr.ai" target="_blank" rel="noopener noreferrer" className="inline-link">
-                Loopr.ai
-              </a>{' '}
-              as a software engineer, tackling complex engineering problems and keeping up with emergent technologies. My
-              short term goal is to add a new skill to my{' '}
+              I am a Founding Engineer at{' '}
+              <a href="https://getdrive.ai" target="_blank" rel="noopener noreferrer" className="inline-link">
+                Drive AI
+              </a>
+              , where I work across the stack to build the product and its technical foundations. I am drawn to hard
+              engineering problems and new technology, and I make a habit of learning one new skill each week, which I
+              document in my{' '}
               <a href="https://github.com/kedarvartak" target="_blank" rel="noopener noreferrer" className="inline-link">
                 brain.md
-              </a>{' '}
-              every single week, while building a side‑hustle, money‑making machine by the end of this year.
+              </a>
+              .
             </p>
             <p className="home-paragraph">
-              I care the most about AI infrastructure, memory and tooling. I prefer to call myself a generalist and not
-              specialist. I bench 210lbs, workout 365 days a year.
+              My interests lie in AI infrastructure, agent memory, and developer tooling, and I work as a generalist
+              across the stack. Outside of engineering, I train every day.
             </p>
           </div>
 
@@ -150,9 +150,6 @@ export default function Home() {
               </a>
               <a href="https://linkedin.com/in/kedar-vartak20" target="_blank" rel="noopener noreferrer" className="inline-link">
                 linkedin
-              </a>
-              <a href="https://twitter.com/kedar2sexy" target="_blank" rel="noopener noreferrer" className="inline-link">
-                twitter
               </a>
             </div>
           </footer>

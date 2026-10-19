@@ -12,8 +12,8 @@ const victorMono = Victor_Mono({
 
 export const metadata: Metadata = {
   title: 'Kedar Vartak',
-  description: 'I am a 21yo Founder and Engineer',
-  keywords: ['Kedar Vartak', 'entrepreneur', 'founder', 'engineer', 'developer', 'startup'],
+  description: 'Founding Engineer at Drive AI, working on applied AI systems, agent infrastructure, and developer tooling.',
+  keywords: ['Kedar Vartak', 'Drive AI', 'founding engineer', 'software engineer', 'AI engineering', 'developer tooling'],
   authors: [{ name: 'Kedar Vartak' }],
   creator: 'Kedar Vartak',
   openGraph: {
@@ -22,13 +22,7 @@ export const metadata: Metadata = {
     url: 'https://kedarvartak.com',
     siteName: 'Kedar Vartak',
     title: 'Kedar Vartak',
-    description: 'I am a 21yo Founder and Engineer',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Kedar Vartak',
-    description: 'I am a 21yo Founder and Engineer',
-    creator: '@kedarvartak',
+    description: 'Founding Engineer at Drive AI, working on applied AI systems, agent infrastructure, and developer tooling.',
   },
   robots: {
     index: true,

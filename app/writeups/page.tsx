@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ThemeToggle } from '../components/theme-toggle'
 import { getWriteups } from '../lib/writeups'
+import { FitToScreen } from '../components/fit-to-screen'
 
 export const metadata = {
   title: "Writeups - Kedar Vartak",
@@ -12,6 +13,7 @@ export default async function WriteupsPage() {
 
   return (
     <main className="split-shell">
+      <FitToScreen />
       <div className="split-container">
         <aside className="split-sidebar">
           <header className="home-nav" aria-label="Primary">
@@ -24,9 +26,6 @@ export default async function WriteupsPage() {
               </Link>
               <Link href="/writeups" className="home-nav-link home-nav-link-active">
                 writeups
-              </Link>
-              <Link href="/shitposts" className="home-nav-link">
-                shitposts
               </Link>
             </div>
             <ThemeToggle />
@@ -41,7 +40,7 @@ export default async function WriteupsPage() {
         </aside>
 
         <section className="split-main">
-          <div className="writeups-list">
+          <div className="writeups-list writeups-grid">
             {writeups.map((item) => (
               <article key={item.slug} className="writeup-item">
                 <span className="writeup-date">{item.date}</span>

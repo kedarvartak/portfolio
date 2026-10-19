@@ -72,6 +72,7 @@ body {
 
 .split-shell {
   height: 100vh;
+  height: 100dvh;
   padding: 0;
   display: flex;
   align-items: center;
@@ -84,16 +85,15 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   gap: 5vw;
-  padding: 2.5rem 4rem;
+  padding: clamp(1.5rem, 6vh, 3.25rem) 4rem;
   height: 100%;
-  max-height: 90vh; /* Keep it within view */
 }
 
 .split-sidebar {
   flex: 0 0 35%;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: clamp(1.25rem, 4.5vh, 3rem);
   height: 100%;
   justify-content: flex-start;
 }
@@ -102,7 +102,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
+  gap: clamp(1.25rem, 4.5vh, 3.5rem);
   min-width: 0;
   height: 100%;
   overflow-y: auto; /* Enable internal scrolling */
@@ -178,13 +178,13 @@ body {
 }
 
 .home-profile-img {
-  width: 140px;
-  height: 140px;
+  width: clamp(88px, 15.5vh, 140px);
+  height: clamp(88px, 15.5vh, 140px);
   object-fit: cover;
   filter: grayscale(100%);
   border-radius: 4px;
   border: 1px solid var(--line);
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(0.5rem, 1.8vh, 1.5rem);
 }
 
 .home-title {
@@ -218,7 +218,7 @@ body {
 .home-section {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: clamp(1rem, 2.6vh, 2rem);
 }
 
 .home-section-title {
@@ -236,7 +236,7 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Compact highlights */
+  gap: clamp(0.6rem, 2vh, 1.5rem); /* Compact highlights */
 }
 
 .home-highlight-item {
@@ -261,7 +261,7 @@ body {
 }
 
 .home-footer {
-  margin-top: 0.5rem;
+  margin-top: auto;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
   display: flex;
@@ -319,16 +319,21 @@ body {
 /* Agent Specific Styles */
 
 .agents-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.8vh, 1.25rem);
+}
+
+/* An odd card out spans the full width instead of leaving a gap. */
+.agent-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 .agent-card {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1.25rem;
+  gap: clamp(0.5rem, 1.4vh, 1rem);
+  padding: clamp(0.9rem, 2vh, 1.25rem);
   border: 1px solid var(--line);
   border-radius: 8px;
   background-color: var(--surface-elevated);
@@ -402,6 +407,30 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+}
+
+.writeups-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3.5vh, 2.25rem) 2.5rem;
+}
+
+.writeups-grid .writeup-item {
+  gap: 0.4rem;
+}
+
+.writeups-grid .writeup-title {
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.writeups-grid .writeup-content {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .writeup-item {
@@ -698,7 +727,9 @@ a {
     font-size: 2.8rem;
   }
 
-  .docs-grid {
+  .docs-grid,
+  .agents-grid,
+  .writeups-grid {
     grid-template-columns: 1fr;
   }
 }

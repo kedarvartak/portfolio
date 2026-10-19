@@ -1,14 +1,16 @@
 import Link from 'next/link'
 import { ThemeToggle } from '../components/theme-toggle'
+import { FitToScreen } from '../components/fit-to-screen'
 
 export const metadata = {
-  title: "Kedar's Agents - Kedar Vartak",
+  title: 'Agents - Kedar Vartak',
   description: 'A closer look at AI agents and applied systems built by Kedar Vartak.',
 }
 
 export default function AgentsPage() {
   return (
     <main className="split-shell">
+      <FitToScreen />
       <div className="split-container">
         <aside className="split-sidebar">
           <header className="home-nav" aria-label="Primary">
@@ -28,19 +30,20 @@ export default function AgentsPage() {
 
           <div className="home-intro-sidebar">
             <img src="/img.jpeg" alt="Kedar Vartak" className="home-profile-img" />
-            <h1 className="home-title">Kedar&apos;s Agents</h1>
+            <h1 className="home-title">Agents</h1>
             <p className="home-lead">
-              Systems, tooling, and experiments built for real software teams and messy production workflows.
+              Systems and tools built for engineering teams working in production.
             </p>
           </div>
 
           <div className="home-intro">
             <p className="home-paragraph">
-              This page is where I collect the agents I&apos;ve built. I care less about flashy demos and more about systems that reduce toil, catch regressions, and help engineers move faster with confidence.
+              A collection of agents I have built to reduce repetitive work, catch regressions early, and help
+              engineers ship with confidence.
             </p>
             <p className="home-paragraph">
-              The current lineup spans trajectory reuse, agent-context observability, regression testing, browser
-              vision, and shared memory—including <strong>Rote</strong>, which turns successful agent runs into
+              The current set covers trajectory reuse, agent context observability, regression testing, browser
+              vision, and shared memory. It includes <strong>Rote</strong>, which turns successful agent runs into
               deterministic, assertion-gated procedures.
             </p>
           </div>
@@ -49,7 +52,7 @@ export default function AgentsPage() {
         <section className="split-main">
           <div className="home-section">
             <h2 className="home-section-title">Featured agents</h2>
-            
+
             <div className="agents-grid">
               <article className="agent-card">
                 <div className="agent-card-top">
@@ -121,7 +124,8 @@ export default function AgentsPage() {
                 <div>
                   <h3 className="agent-title">Easy Sanity</h3>
                   <p className="agent-description">
-                    A calm, persistent QA partner that patrols critical product flows, reruns key journeys, and flags regressions before they turn into team-wide distractions.
+                    A QA agent that continuously tests critical product flows and flags regressions before they
+                    reach production.
                   </p>
                 </div>
 
@@ -146,12 +150,13 @@ export default function AgentsPage() {
                 <div>
                   <h3 className="agent-title">Multi Agent Memo</h3>
                   <p className="agent-description">
-                    A shared context layer for Claude Code, Codex, and Gemini CLI. It maintains a single source of truth in your repo to eliminate "cold starts" and keep multiple agents in sync automatically.
+                    A shared context layer for Claude Code, Codex, and Gemini CLI. It keeps one source of truth in the
+                    repository, so every agent starts with full context and stays in sync with the others.
                   </p>
                 </div>
 
                 <div className="agent-meta-row">
-                  <span className="agent-meta-item">No more cold starts</span>
+                  <span className="agent-meta-item">Shared context on start</span>
                   <span className="agent-meta-item">Append-only AGENTS.md</span>
                   <span className="agent-meta-item">Multi-CLI compatibility</span>
                 </div>
@@ -171,14 +176,15 @@ export default function AgentsPage() {
                 <div>
                   <h3 className="agent-title">Agent Vision</h3>
                   <p className="agent-description">
-                    Gives agents direct visual access to live Chrome or Brave tabs through the Chrome DevTools Protocol. It lets agents capture screenshots and pull structured page metadata on demand.
+                    Gives agents visual access to live Chrome or Brave tabs through the Chrome DevTools Protocol,
+                    allowing them to capture screenshots and read structured page data on demand.
                   </p>
                 </div>
 
                 <div className="agent-meta-row">
                   <span className="agent-meta-item">Chrome DevTools Protocol</span>
-                  <span className="agent-meta-item">Real-time Visual Context</span>
-                  <span className="agent-meta-item">Structured Page Data</span>
+                  <span className="agent-meta-item">Real-time visual context</span>
+                  <span className="agent-meta-item">Structured page data</span>
                 </div>
 
                 <div>
@@ -189,12 +195,6 @@ export default function AgentsPage() {
               </article>
             </div>
           </div>
-
-          <footer className="home-footer">
-            <div className="home-footer-links">
-              {/* Footer links removed as requested */}
-            </div>
-          </footer>
         </section>
       </div>
     </main>
